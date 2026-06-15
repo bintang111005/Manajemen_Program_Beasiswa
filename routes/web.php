@@ -39,3 +39,13 @@ Route::resource(
     'applications',
     ScholarshipApplicationController::class
 );
+
+Route::view(
+'/student',
+'student.dashboard'
+);
+
+Route::view(
+'/admin',
+'admin.dashboard'
+);

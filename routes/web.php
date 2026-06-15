@@ -41,11 +41,21 @@ Route::resource(
 );
 
 Route::view(
-'/student',
-'student.dashboard'
+    '/student',
+    'student.dashboard'
 );
 
 Route::view(
-'/admin',
-'admin.dashboard'
+    '/admin',
+    'admin.dashboard'
+);
+
+Route::view(
+    '/student',
+    'student.dashboard'
+);
+
+Route::view(
+    '/program',
+    'public.scholarship'
 );

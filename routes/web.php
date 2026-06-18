@@ -167,3 +167,13 @@ Route::view(
     'admin.dashboard'
 
 );
+
+Route::view(
+    '/applications/create',
+    'applications.create'
+);
+
+Route::view(
+    '/applications/upload',
+    'applications.upload'
+);

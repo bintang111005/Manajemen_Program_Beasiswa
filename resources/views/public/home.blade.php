@@ -46,7 +46,7 @@
 
                     <div class="mt-5 d-flex flex-wrap gap-3">
 
-                        <a href="/program" class="btn btn-main">
+                        <a href="#kategori-beasiswa" class="btn btn-main">
 
                             Cari Beasiswa
 
@@ -186,161 +186,142 @@
 
 
 
+    ```php
     <!-- KATEGORI -->
 
-    <section class="section fade-up">
+    <section id="kategori-beasiswa" class="section fade-up"></section>
 
-        <div class="container text-center">
+    <div class="container text-center">
 
-            <h5 class="text-primary mb-3">
+        <h5 class="text-primary">
 
-                Kategori Beasiswa
+            Kategori Beasiswa
 
-            </h5>
+        </h5>
 
-            <h2 class="fw-bold mb-5">
+        <h2 class="fw-bold mb-5">
 
-                Pilih Program Yang Sesuai
+            Pilih Jenjang Pendidikan
 
-            </h2>
+        </h2>
 
-            <div class="row g-4 justify-content-center">
+        <p class="hero-text mx-auto mb-5">
 
-                <div class="col-lg-2 col-md-6">
+            Pilih jenjang pendidikan yang sesuai sebelum melanjutkan ke jalur pendaftaran.
 
-                    <div class="category-card">
+        </p>
 
-                        <div class="icon">
+        <div class="row g-4 justify-content-center">
 
-                            🎓
 
-                        </div>
 
-                        <h4>
+            <!-- S1 -->
 
-                            S1
+            <div class="col-lg-4">
 
-                        </h4>
+                <div class="category-card h-100">
 
-                        <p>
+                    <div class="icon">
 
-                            Jenjang Sarjana
-
-                        </p>
+                        🎓
 
                     </div>
+
+                    <h3>
+
+                        Beasiswa S1
+
+                    </h3>
+
+                    <p>
+
+                        Program beasiswa untuk mahasiswa jenjang Sarjana (S1).
+
+                    </p>
+
+                    <br>
+
+                    <a href="/program" class="btn btn-main">
+
+                        Pilih Program
+
+                    </a>
 
                 </div>
 
+            </div>
 
 
-                <div class="col-lg-2 col-md-6">
 
-                    <div class="category-card">
+            <!-- S2 -->
 
-                        <div class="icon">
+            <div class="col-lg-4">
 
-                            📖
+                <div class="category-card h-100">
 
-                        </div>
+                    <div class="icon">
 
-                        <h4>
-
-                            S2
-
-                        </h4>
-
-                        <p>
-
-                            Jenjang Magister
-
-                        </p>
+                        📖
 
                     </div>
+
+                    <h3>
+
+                        Beasiswa S2
+
+                    </h3>
+
+                    <p>
+
+                        Program beasiswa untuk mahasiswa jenjang Magister (S2).
+
+                    </p>
+
+                    <br>
+
+                    <a href="/program" class="btn btn-main">
+
+                        Pilih Program
+
+                    </a>
 
                 </div>
 
+            </div>
 
 
-                <div class="col-lg-2 col-md-6">
 
-                    <div class="category-card">
+            <!-- S3 -->
 
-                        <div class="icon">
+            <div class="col-lg-4">
 
-                            🎖
+                <div class="category-card h-100">
 
-                        </div>
+                    <div class="icon">
 
-                        <h4>
-
-                            S3
-
-                        </h4>
-
-                        <p>
-
-                            Jenjang Doktor
-
-                        </p>
+                        🎖
 
                     </div>
 
-                </div>
+                    <h3>
 
+                        Beasiswa S3
 
+                    </h3>
 
-                <div class="col-lg-3 col-md-6">
+                    <p>
 
-                    <div class="category-card">
+                        Program beasiswa untuk mahasiswa jenjang Doktor (S3).
 
-                        <div class="icon">
+                    </p>
 
-                            🌏
+                    <br>
 
-                        </div>
+                    <a href="/program" class="btn btn-main">
 
-                        <h4>
+                        Pilih Program
 
-                            Luar Negeri
-
-                        </h4>
-
-                        <p>
-
-                            Program Internasional
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-
-                <div class="col-lg-3 col-md-6">
-
-                    <div class="category-card">
-
-                        <div class="icon">
-
-                            💼
-
-                        </div>
-
-                        <h4>
-
-                            Bidang Studi
-
-                        </h4>
-
-                        <p>
-
-                            Sesuai Jurusan
-
-                        </p>
-
-                    </div>
+                    </a>
 
                 </div>
 
@@ -348,10 +329,9 @@
 
         </div>
 
+    </div>
+
     </section>
-
-
-
 
     <!-- CARA KERJA -->
 
@@ -525,48 +505,6 @@
         </div>
 
     </section>
-
-
-
-
-    <!-- CTA -->
-
-    <section class="section fade-up">
-
-        <div class="container">
-
-            <div class="testimonial text-center">
-
-                <h2>
-
-                    Siap Meraih Masa Depan Dengan Beasiswa?
-
-                </h2>
-
-                <br>
-
-                <p>
-
-                    Daftarkan dirimu sekarang dan raih kesempatan terbaik untuk masa depanmu.
-
-                </p>
-
-                <br>
-
-                <a href="/program" class="btn btn-main">
-
-                    Daftar Sekarang
-
-                </a>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
 
     <!-- FOOTER -->
 

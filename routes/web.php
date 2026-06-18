@@ -5,30 +5,34 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ScholarshipController;
 use App\Http\Controllers\ScholarshipApplicationController;
 
+
+/* ======================
+PUBLIC
+====================== */
+
 Route::get('/', function () {
     return view('public.home');
 });
 
-Route::get(
+Route::view(
     '/program',
-    function () {
-        return view('public.scholarship');
-    }
+    'public.scholarship'
 );
 
-Route::get(
+Route::view(
     '/faq',
-    function () {
-        return view('public.faq');
-    }
+    'public.faq'
 );
 
-Route::get(
+Route::view(
     '/contact',
-    function () {
-        return view('public.contact');
-    }
+    'public.contact'
 );
+
+
+/* ======================
+RESOURCE
+====================== */
 
 Route::resource(
     'scholarships',
@@ -40,6 +44,11 @@ Route::resource(
     ScholarshipApplicationController::class
 );
 
+
+/* ======================
+DASHBOARD
+====================== */
+
 Route::view(
     '/student',
     'student.dashboard'
@@ -48,14 +57,4 @@ Route::view(
 Route::view(
     '/admin',
     'admin.dashboard'
-);
-
-Route::view(
-    '/student',
-    'student.dashboard'
-);
-
-Route::view(
-    '/program',
-    'public.scholarship'
 );

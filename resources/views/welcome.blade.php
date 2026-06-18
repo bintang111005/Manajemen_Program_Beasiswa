@@ -3,46 +3,76 @@
 @section('content')
 
     <!-- HERO -->
-    <section class="hero-section fade-up">
+
+    <section class="hero-section">
 
         <div class="mesh-left"></div>
+
         <div class="mesh-right"></div>
 
         <div class="container">
 
-            <div class="row align-items-center">
+            <div class="row align-items-center gy-5">
 
-                <!-- LEFT -->
                 <div class="col-lg-6">
 
-                    <h1 class="hero-title">
+                    <span class="hero-badge">
+
+                        Wujudkan Masa Depan Bersama Beasiswa
+
+                    </span>
+
+                    <h1 class="hero-title mt-4">
+
                         Temukan Program
+
                         <br>
+
                         Beasiswa Terbaik
+
+                        <br>
+
+                        Untuk Masa Depanmu
+
                     </h1>
 
                     <p class="hero-text">
-                        Platform pengelolaan program beasiswa
-                        dari pengumuman hingga penetapan
-                        penerima.
 
-                        Daftar, unggah dokumen,
-                        pantau seleksi,
-                        dan lihat hasil secara transparan.
+                        Platform pengelolaan program beasiswa
+
+                        yang membantu mahasiswa mencari,
+
+                        mendaftar, dan memantau proses
+
+                        seleksi secara transparan.
+
                     </p>
 
-                    <a href="/program" class="btn btn-main mt-4">
-                        Daftar Sekarang
-                    </a>
+                    <div class="mt-5">
+
+                        <a href="/program" class="btn btn-main">
+
+                            Cari Beasiswa
+
+                        </a>
+
+                        <a href="#cara-kerja" class="btn btn-outline-main ms-3">
+
+                            Pelajari Lebih Lanjut
+
+                        </a>
+
+                    </div>
 
                 </div>
 
-                <!-- RIGHT -->
+
+
                 <div class="col-lg-6">
 
                     <div class="hero-visual">
 
-                        <img src="{{ asset('images/hero-illustration.jpg') }}" class="hero-image">
+                        <img src="{{ asset('images/hero-illustration.jpg') }}" class="hero-image" alt="Hero">
 
                     </div>
 
@@ -55,30 +85,33 @@
     </section>
 
 
-    <!-- STAT -->
+
+    <!-- STATISTIK -->
+
     <section class="section fade-up">
 
         <div class="container">
 
             <div class="row g-4">
 
-                <div class="col-md-4">
+                <div class="col-md-3">
 
                     <div class="stat-card">
 
                         <h2>500+</h2>
 
-                        <p>Awardee</p>
+                        <p>Program Beasiswa</p>
 
                     </div>
 
                 </div>
 
-                <div class="col-md-4">
+
+                <div class="col-md-3">
 
                     <div class="stat-card">
 
-                        <h2>1000+</h2>
+                        <h2>18.500+</h2>
 
                         <p>Pendaftar</p>
 
@@ -86,13 +119,27 @@
 
                 </div>
 
-                <div class="col-md-4">
+
+                <div class="col-md-3">
 
                     <div class="stat-card">
 
-                        <h2>98%</h2>
+                        <h2>7.850+</h2>
 
-                        <p>Kelulusan</p>
+                        <p>Penerima</p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-3">
+
+                    <div class="stat-card">
+
+                        <h2>120+</h2>
+
+                        <p>Institusi Mitra</p>
 
                     </div>
 
@@ -106,20 +153,30 @@
 
 
 
+
     <!-- KATEGORI -->
+
     <section class="section fade-up">
 
-        <div class="container">
+        <div class="container text-center">
 
-            <h2 class="mb-5 fw-bold">
+            <h5 class="text-primary">
 
-                Program Beasiswa
+                Kategori Beasiswa
+
+            </h5>
+
+            <h2 class="fw-bold mb-5">
+
+                Pilih Beasiswa
+
+                Sesuai Kebutuhanmu
 
             </h2>
 
             <div class="row g-4">
 
-                <div class="col-lg-6">
+                <div class="col-lg-3">
 
                     <div class="category-card">
 
@@ -129,16 +186,17 @@
 
                         </div>
 
-                        <h3>
+                        <h4>
 
                             Akademik
 
-                        </h3>
+                        </h4>
 
                         <p>
 
-                            Prestasi Nilai, Transkrip,
-                            dan Sertifikat Akademik.
+                            IPK, Transkrip,
+
+                            dan Prestasi Akademik.
 
                         </p>
 
@@ -146,7 +204,8 @@
 
                 </div>
 
-                <div class="col-lg-6">
+
+                <div class="col-lg-3">
 
                     <div class="category-card">
 
@@ -156,17 +215,77 @@
 
                         </div>
 
-                        <h3>
+                        <h4>
 
                             Non Akademik
 
-                        </h3>
+                        </h4>
 
                         <p>
 
-                            Prestasi Organisasi,
-                            Olahraga, Seni,
-                            dan Portofolio.
+                            Olahraga,
+
+                            Organisasi,
+
+                            dan Seni.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-3">
+
+                    <div class="category-card">
+
+                        <div class="icon">
+
+                            🌏
+
+                        </div>
+
+                        <h4>
+
+                            Luar Negeri
+
+                        </h4>
+
+                        <p>
+
+                            Program Internasional
+
+                            dan Pertukaran Pelajar.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-3">
+
+                    <div class="category-card">
+
+                        <div class="icon">
+
+                            💼
+
+                        </div>
+
+                        <h4>
+
+                            Bidang Studi
+
+                        </h4>
+
+                        <p>
+
+                            Teknologi Informasi,
+
+                            Bisnis, dan Kesehatan.
 
                         </p>
 
@@ -182,7 +301,193 @@
 
 
 
+
+    <!-- CARA KERJA -->
+
+    <section id="cara-kerja" class="section fade-up">
+
+        <div class="container text-center">
+
+            <h5 class="text-primary">
+
+                Cara Kerja
+
+            </h5>
+
+            <h2 class="fw-bold mb-5">
+
+                3 Langkah Mudah
+
+                Mendapatkan Beasiswa
+
+            </h2>
+
+            <div class="row g-4">
+
+                <div class="col-md-4">
+
+                    <div class="category-card">
+
+                        <div class="icon">
+
+                            🔍
+
+                        </div>
+
+                        <h4>
+
+                            Cari Beasiswa
+
+                        </h4>
+
+                        <p>
+
+                            Temukan program
+
+                            yang sesuai.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <div class="category-card">
+
+                        <div class="icon">
+
+                            📄
+
+                        </div>
+
+                        <h4>
+
+                            Lengkapi Dokumen
+
+                        </h4>
+
+                        <p>
+
+                            Unggah seluruh
+
+                            persyaratan.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <div class="category-card">
+
+                        <div class="icon">
+
+                            🚀
+
+                        </div>
+
+                        <h4>
+
+                            Kirim Pendaftaran
+
+                        </h4>
+
+                        <p>
+
+                            Pantau hasil
+
+                            seleksi.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+
+    <!-- KEUNGGULAN -->
+
+    <section class="section fade-up">
+
+        <div class="container">
+
+            <div class="row align-items-center gy-5">
+
+                <div class="col-lg-6">
+
+                    <h5 class="text-primary">
+
+                        Mengapa Memilih Kami
+
+                    </h5>
+
+                    <h2 class="fw-bold mb-5">
+
+                        Platform Beasiswa
+
+                        Yang Terpercaya
+
+                    </h2>
+
+                    <div class="category-card mb-3">
+
+                        ✔ Informasi Lengkap
+
+                    </div>
+
+                    <div class="category-card mb-3">
+
+                        ✔ Proses Mudah
+
+                    </div>
+
+                    <div class="category-card mb-3">
+
+                        ✔ Banyak Pilihan
+
+                    </div>
+
+                    <div class="category-card">
+
+                        ✔ Dukungan Pengguna
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="col-lg-6 text-center">
+
+                    <img src="{{ asset('images/hero-illustration.jpg') }}" class="hero-image">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+
     <!-- TESTIMONI -->
+
     <section class="section fade-up">
 
         <div class="container">
@@ -199,9 +504,13 @@
 
                 <p>
 
-                    "Program ini membantu saya
-                    mengembangkan prestasi dan
-                    mendukung pendidikan saya."
+                    "Platform ini membantu saya
+
+                    mendapatkan beasiswa
+
+                    dengan lebih mudah
+
+                    dan transparan."
 
                 </p>
 
@@ -221,325 +530,56 @@
 
 
 
-    <style>
-        /* HERO */
 
-        .hero-section {
+    <!-- CTA -->
 
-            position: relative;
+    <section class="section fade-up">
 
-            padding: 120px 0;
+        <div class="container text-center">
 
-            overflow: hidden;
+            <h2 class="fw-bold">
 
-            animation: heroOpen 1.2s ease;
+                Siap Meraih Masa Depan
 
-        }
+                Dengan Beasiswa?
 
+            </h2>
 
+            <p class="hero-text mx-auto">
 
-        .hero-title {
+                Daftarkan dirimu sekarang
 
-            font-size: 74px;
+                dan raih kesempatan terbaik.
 
-            font-weight: 800;
+            </p>
 
-            line-height: 1.05;
+            <div class="mt-4">
 
-            letter-spacing: -3px;
+                <a href="/program" class="btn btn-main">
 
-        }
+                    Daftar Sekarang
 
+                </a>
 
+            </div>
 
-        .hero-text {
+        </div>
 
-            margin-top: 25px;
+    </section>
 
-            font-size: 18px;
 
-            line-height: 1.9;
 
-            color: #667575;
 
-            max-width: 560px;
+    <!-- FOOTER -->
 
-        }
+    <footer>
 
+        <p>
 
+            © 2026 ScholarHub
 
-        /* IMAGE */
+        </p>
 
-        .hero-image {
-
-            width: 100%;
-
-            max-width: 580px;
-
-            /* MELENGKUNG */
-            border-radius: 40px;
-
-            box-shadow:
-                0 30px 70px rgba(0, 43, 43, .18);
-
-            transition: .5s;
-
-        }
-
-
-
-        .hero-image:hover {
-
-            transform:
-                translateY(-8px);
-
-        }
-
-
-
-        /* MESH */
-
-        .mesh-left {
-
-            position: absolute;
-
-            width: 500px;
-
-            height: 500px;
-
-            background: #002B2B;
-
-            left: -220px;
-
-            top: 100px;
-
-            filter: blur(150px);
-
-            opacity: .08;
-
-            border-radius: 50%;
-
-        }
-
-
-
-        .mesh-right {
-
-            position: absolute;
-
-            width: 420px;
-
-            height: 420px;
-
-            background: #2BC4C4;
-
-            right: -150px;
-
-            bottom: 40px;
-
-            filter: blur(150px);
-
-            opacity: .18;
-
-            border-radius: 50%;
-
-        }
-
-
-
-        /* CARD */
-
-        .stat-card,
-
-        .category-card {
-
-            background: white;
-
-            padding: 45px;
-
-            border-radius: 30px;
-
-            box-shadow:
-                0 12px 35px rgba(0, 0, 0, .05);
-
-        }
-
-
-
-        .stat-card h2 {
-
-            color: #008080;
-
-            font-size: 54px;
-
-        }
-
-
-
-        .category-card {
-
-            transition: .4s;
-
-        }
-
-
-
-        .category-card:hover {
-
-            transform:
-                translateY(-8px);
-
-        }
-
-
-
-        /* TESTIMONI */
-
-        .testimonial {
-
-            padding: 80px;
-
-            border-radius: 40px;
-
-            color: white;
-
-            background:
-                linear-gradient(135deg,
-                    #002B2B,
-                    #005959);
-
-        }
-
-
-
-        /* ANIMATION */
-
-        .fade-up {
-
-            opacity: 0;
-
-            transform:
-                translateY(70px);
-
-            transition:
-                all 1s ease;
-
-        }
-
-
-
-        .fade-up.show {
-
-            opacity: 1;
-
-            transform:
-                translateY(0);
-
-        }
-
-
-
-        /* HERO LOAD */
-
-        @keyframes heroOpen {
-
-            from {
-
-                opacity: 0;
-
-                transform:
-                    translateY(40px);
-
-            }
-
-            to {
-
-                opacity: 1;
-
-                transform:
-                    translateY(0);
-
-            }
-
-        }
-
-
-
-        /* MOBILE */
-
-        @media(max-width:992px) {
-
-            .hero-title {
-
-                font-size: 48px;
-
-            }
-
-            .hero-image {
-
-                margin-top: 50px;
-
-            }
-
-        }
-    </style>
-
-
-
-    <script>
-
-        const observer = new IntersectionObserver(
-
-            (entries) => {
-
-                entries.forEach(
-
-                    (entry) => {
-
-                        if (
-
-                            entry.isIntersecting
-
-                        ) {
-
-                            entry.target.classList.add(
-
-                                "show"
-
-                            );
-
-                        }
-
-                    }
-
-                );
-
-            },
-
-            {
-
-                threshold: .15
-
-            }
-
-        );
-
-        document
-
-            .querySelectorAll(
-
-                ".fade-up"
-
-            )
-
-            .forEach(
-
-                (el) => {
-
-                    observer.observe(el);
-
-                });
-
-    </script>
+    </footer>
 
 @endsection

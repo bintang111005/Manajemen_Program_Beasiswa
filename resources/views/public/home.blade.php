@@ -1,44 +1,60 @@
+```php
 @extends('layouts.app')
 
 @section('content')
 
-
     <!-- HERO -->
 
-    <section class="section fade-up">
+    <section class="hero-section">
+
+        <div class="mesh-left"></div>
+
+        <div class="mesh-right"></div>
 
         <div class="container">
 
             <div class="row align-items-center gy-5">
 
-                <!-- KIRI -->
-
                 <div class="col-lg-6">
 
-                    <h1 class="hero-title">
+                    <span class="hero-badge">
+
+                        🎓 Platform Manajemen Program Beasiswa
+
+                    </span>
+
+                    <h1 class="hero-title mt-4">
 
                         Temukan Program
+
                         <br>
 
                         Beasiswa Terbaik
+
+                        <br>
+
+                        Untuk Masa Depanmu
 
                     </h1>
 
                     <p class="hero-text">
 
-                        Platform pengelolaan program beasiswa
-                        dari pengumuman hingga penetapan
-                        penerima. Daftar, unggah dokumen,
-                        pantau seleksi, dan lihat hasil
-                        secara transparan.
+                        Platform pengelolaan program beasiswa mulai dari pengumuman, pendaftaran, unggah dokumen, proses
+                        seleksi, hingga penetapan penerima beasiswa secara transparan.
 
                     </p>
 
-                    <div class="mt-5">
+                    <div class="mt-5 d-flex flex-wrap gap-3">
 
                         <a href="/program" class="btn btn-main">
 
-                            Daftar Sekarang
+                            Cari Beasiswa
+
+                        </a>
+
+                        <a href="#cara-kerja" class="btn btn-outline-main">
+
+                            Pelajari Lebih Lanjut
 
                         </a>
 
@@ -48,18 +64,11 @@
 
 
 
-                <!-- KANAN -->
-
                 <div class="col-lg-6">
 
                     <div class="hero-visual">
 
-                        <div class="mesh-left"></div>
-
-                        <div class="mesh-right"></div>
-
-                        <img src="{{ asset('images/hero-illustration.jpg') }}" alt="Scholarship Illustration"
-                            class="hero-image">
+                        <img src="{{ asset('images/hero-illustration.jpg') }}" class="hero-image" alt="Hero">
 
                     </div>
 
@@ -80,21 +89,21 @@
 
         <div class="container">
 
-            <div class="row g-4">
+            <div class="row g-4 text-center">
 
-                <div class="col-md-4">
+                <div class="col-md-3">
 
                     <div class="stat-card">
 
                         <h2>
 
-                            500+
+                            250+
 
                         </h2>
 
                         <p>
 
-                            Awardee
+                            Program Beasiswa
 
                         </p>
 
@@ -103,13 +112,14 @@
                 </div>
 
 
-                <div class="col-md-4">
+
+                <div class="col-md-3">
 
                     <div class="stat-card">
 
                         <h2>
 
-                            1000+
+                            18.500+
 
                         </h2>
 
@@ -124,19 +134,42 @@
                 </div>
 
 
-                <div class="col-md-4">
+
+                <div class="col-md-3">
 
                     <div class="stat-card">
 
                         <h2>
 
-                            98%
+                            7.850+
 
                         </h2>
 
                         <p>
 
-                            Kelulusan
+                            Penerima
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="col-md-3">
+
+                    <div class="stat-card">
+
+                        <h2>
+
+                            120+
+
+                        </h2>
+
+                        <p>
+
+                            Institusi Mitra
 
                         </p>
 
@@ -153,21 +186,27 @@
 
 
 
-    <!-- PROGRAM -->
+    <!-- KATEGORI -->
 
     <section class="section fade-up">
 
-        <div class="container">
+        <div class="container text-center">
+
+            <h5 class="text-primary mb-3">
+
+                Kategori Beasiswa
+
+            </h5>
 
             <h2 class="fw-bold mb-5">
 
-                Program Beasiswa
+                Pilih Program Yang Sesuai
 
             </h2>
 
-            <div class="row g-4">
+            <div class="row g-4 justify-content-center">
 
-                <div class="col-lg-6">
+                <div class="col-lg-2 col-md-6">
 
                     <div class="category-card">
 
@@ -177,17 +216,15 @@
 
                         </div>
 
-                        <h3>
+                        <h4>
 
-                            Akademik
+                            S1
 
-                        </h3>
+                        </h4>
 
                         <p>
 
-                            Fokus pada prestasi nilai,
-                            IPK, riset, dan pencapaian
-                            akademik mahasiswa.
+                            Jenjang Sarjana
 
                         </p>
 
@@ -197,27 +234,109 @@
 
 
 
-                <div class="col-lg-6">
+                <div class="col-lg-2 col-md-6">
 
                     <div class="category-card">
 
                         <div class="icon">
 
-                            🏆
+                            📖
 
                         </div>
 
-                        <h3>
+                        <h4>
 
-                            Non Akademik
+                            S2
 
-                        </h3>
+                        </h4>
 
                         <p>
 
-                            Fokus pada prestasi organisasi,
-                            minat, bakat, olahraga,
-                            dan kreativitas.
+                            Jenjang Magister
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="col-lg-2 col-md-6">
+
+                    <div class="category-card">
+
+                        <div class="icon">
+
+                            🎖
+
+                        </div>
+
+                        <h4>
+
+                            S3
+
+                        </h4>
+
+                        <p>
+
+                            Jenjang Doktor
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="col-lg-3 col-md-6">
+
+                    <div class="category-card">
+
+                        <div class="icon">
+
+                            🌏
+
+                        </div>
+
+                        <h4>
+
+                            Luar Negeri
+
+                        </h4>
+
+                        <p>
+
+                            Program Internasional
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="col-lg-3 col-md-6">
+
+                    <div class="category-card">
+
+                        <div class="icon">
+
+                            💼
+
+                        </div>
+
+                        <h4>
+
+                            Bidang Studi
+
+                        </h4>
+
+                        <p>
+
+                            Sesuai Jurusan
 
                         </p>
 
@@ -234,38 +353,107 @@
 
 
 
-    <!-- TESTIMONI -->
+    <!-- CARA KERJA -->
 
-    <section class="section fade-up">
+    <section id="cara-kerja" class="section fade-up">
 
-        <div class="container">
+        <div class="container text-center">
 
-            <div class="testimonial">
+            <h5 class="text-primary mb-3">
 
-                <h2 class="fw-bold">
+                Cara Kerja
 
-                    Testimoni Awardee
+            </h5>
 
-                </h2>
+            <h2 class="fw-bold mb-5">
 
-                <br>
+                3 Langkah Mudah
 
-                <p style="font-size:18px; line-height:1.8;">
+            </h2>
 
-                    "Program ini membantu saya
-                    melanjutkan pendidikan,
-                    mengembangkan kemampuan,
-                    dan membuka kesempatan baru."
+            <div class="row g-4">
 
-                </p>
+                <div class="col-md-4">
 
-                <br>
+                    <div class="category-card">
 
-                <strong>
+                        <div class="icon">
 
-                    — Mahasiswa Penerima Beasiswa
+                            🔎
 
-                </strong>
+                        </div>
+
+                        <h4>
+
+                            Cari Beasiswa
+
+                        </h4>
+
+                        <p>
+
+                            Pilih program yang sesuai dengan kebutuhanmu.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="col-md-4">
+
+                    <div class="category-card">
+
+                        <div class="icon">
+
+                            📝
+
+                        </div>
+
+                        <h4>
+
+                            Lengkapi Dokumen
+
+                        </h4>
+
+                        <p>
+
+                            Unggah semua persyaratan yang dibutuhkan.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="col-md-4">
+
+                    <div class="category-card">
+
+                        <div class="icon">
+
+                            📤
+
+                        </div>
+
+                        <h4>
+
+                            Kirim Pendaftaran
+
+                        </h4>
+
+                        <p>
+
+                            Pantau status seleksi secara real-time.
+
+                        </p>
+
+                    </div>
+
+                </div>
 
             </div>
 
@@ -274,4 +462,123 @@
     </section>
 
 
+
+
+    <!-- KEUNGGULAN -->
+
+    <section class="section fade-up">
+
+        <div class="container">
+
+            <div class="row align-items-center gy-5">
+
+                <div class="col-lg-6">
+
+                    <h5 class="text-primary mb-3">
+
+                        Mengapa Memilih Kami
+
+                    </h5>
+
+                    <h2 class="fw-bold mb-5">
+
+                        Platform Beasiswa Yang Terpercaya
+
+                    </h2>
+
+                    <div class="category-card mb-3">
+
+                        ✔ Informasi Lengkap & Terpercaya
+
+                    </div>
+
+                    <div class="category-card mb-3">
+
+                        ✔ Proses Mudah & Cepat
+
+                    </div>
+
+                    <div class="category-card mb-3">
+
+                        ✔ Banyak Pilihan Program
+
+                    </div>
+
+                    <div class="category-card">
+
+                        ✔ Dukungan Pengguna
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="col-lg-6 text-center">
+
+                    <img src="{{ asset('images/hero-illustration.jpg') }}" class="hero-image" alt="Feature">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+
+    <!-- CTA -->
+
+    <section class="section fade-up">
+
+        <div class="container">
+
+            <div class="testimonial text-center">
+
+                <h2>
+
+                    Siap Meraih Masa Depan Dengan Beasiswa?
+
+                </h2>
+
+                <br>
+
+                <p>
+
+                    Daftarkan dirimu sekarang dan raih kesempatan terbaik untuk masa depanmu.
+
+                </p>
+
+                <br>
+
+                <a href="/program" class="btn btn-main">
+
+                    Daftar Sekarang
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+
+            © 2026 ScholarHub - Manajemen Program Beasiswa
+
+        </p>
+
+    </footer>
+
 @endsection
+```

@@ -1,502 +1,730 @@
+```php
 <!DOCTYPE html>
 <html lang="id">
 
 <head>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
 
-    <title>
-        Manajemen Program Beasiswa
-    </title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<title>Manajemen Program Beasiswa</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
+<link
+href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+rel="stylesheet">
 
-    <style>
-        :root {
+<link
+href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
 
-            --bg: #FFFFFF;
-            --navbar: #002B2B;
-            --text: #001A1A;
-            --primary: #008080;
-            --secondary: #2BC4C4;
+<style>
 
-        }
+:root{
 
-        /* ==================
+--bg:#FFFFFF;
+
+--navbar:#002B2B;
+
+--text:#001A1A;
+
+--primary:#008080;
+
+--secondary:#2BC4C4;
+
+--text-soft:#667575;
+
+}
+
+
+
+/* ======================
 GLOBAL
-================== */
+====================== */
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
+*{
 
-        html {
-            scroll-behavior: smooth;
-        }
+margin:0;
 
-        body {
+padding:0;
 
-            background: var(--bg);
+box-sizing:border-box;
 
-            color: var(--text);
+font-family:'Plus Jakarta Sans',sans-serif;
 
-            overflow-x: hidden;
+}
 
-        }
+html{
+
+scroll-behavior:smooth;
+
+}
+
+body{
+
+background:var(--bg);
+
+color:var(--text);
+
+overflow-x:hidden;
+
+}
 
 
-        /* ==================
+
+/* ======================
 NAVBAR
-================== */
+====================== */
 
-        .navbar {
+.navbar{
 
-            background: var(--navbar);
+background:var(--navbar);
 
-            padding: 20px 0;
+padding:18px 0;
 
-        }
+position:sticky;
 
-        .navbar-brand {
+top:0;
 
-            color: white !important;
+z-index:1000;
 
-            font-size: 30px;
+box-shadow:
 
-            font-weight: 800;
+0 3px 15px rgba(0,0,0,.08);
 
-            letter-spacing: -1px;
-
-        }
-
-        .nav-link {
-
-            color: white !important;
-
-            margin-left: 28px;
-
-            font-size: 15px;
-
-            font-weight: 500;
-
-            text-decoration: none;
-
-            transition: .3s;
-
-        }
-
-        .nav-link:hover {
-
-            opacity: .7;
-
-        }
+}
 
 
-        /* ==================
+
+.navbar-brand{
+
+color:#FFFFFF !important;
+
+font-size:30px;
+
+font-weight:800;
+
+letter-spacing:-1px;
+
+}
+
+
+
+.nav-link{
+
+color:#FFFFFF !important;
+
+margin-left:28px;
+
+font-size:15px;
+
+font-weight:500;
+
+text-decoration:none;
+
+transition:.3s;
+
+}
+
+
+
+.nav-link:hover{
+
+opacity:.8;
+
+}
+
+
+
+/* ======================
 BUTTON
-================== */
+====================== */
 
-        .btn-main {
+.btn-main{
 
-            background: var(--primary);
+background:var(--primary);
 
-            color: white;
+color:#FFFFFF;
 
-            padding: 14px 36px;
+padding:14px 34px;
 
-            border-radius: 16px;
+border-radius:14px;
 
-            text-decoration: none;
+font-weight:600;
 
-            font-weight: 600;
+text-decoration:none;
 
-            display: inline-block;
+border:none;
 
-            transition: .4s;
+display:inline-block;
 
-        }
+transition:.3s;
 
-        .btn-main:hover {
-
-            background: var(--secondary);
-
-            transform: translateY(-3px);
-
-            color: white;
-
-        }
+}
 
 
-        /* ==================
+
+.btn-main:hover{
+
+background:var(--secondary);
+
+transform:
+
+translateY(-3px);
+
+color:#FFFFFF;
+
+}
+
+
+
+.btn-outline-main{
+
+border:
+
+2px solid var(--primary);
+
+padding:14px 34px;
+
+border-radius:14px;
+
+font-weight:600;
+
+text-decoration:none;
+
+color:var(--primary);
+
+transition:.3s;
+
+}
+
+
+
+.btn-outline-main:hover{
+
+background:var(--primary);
+
+color:#FFFFFF;
+
+}
+
+
+
+/* ======================
 HERO
-================== */
+====================== */
 
-        .hero-section {
+.hero-section{
 
-            position: relative;
+position:relative;
 
-            padding: 120px 0;
+padding:120px 0;
 
-            overflow: hidden;
+overflow:hidden;
 
-            animation:
-                heroLoad 1.2s ease;
+animation:
 
-        }
+heroLoad 1s ease;
 
+}
 
-        /* BACKGROUND */
 
-        .mesh-left {
 
-            position: absolute;
+.hero-badge{
 
-            left: -180px;
+display:inline-block;
 
-            top: 100px;
+background:#E8F8F8;
 
-            width: 500px;
+color:var(--primary);
 
-            height: 500px;
+padding:10px 18px;
 
-            background: #002B2B;
+border-radius:30px;
 
-            filter: blur(170px);
+font-size:14px;
 
-            opacity: .06;
+font-weight:600;
 
-            border-radius: 50%;
+}
 
-        }
 
-        .mesh-right {
 
-            position: absolute;
+.hero-title{
 
-            right: -120px;
+font-size:64px;
 
-            bottom: 50px;
+font-weight:800;
 
-            width: 420px;
+line-height:1.08;
 
-            height: 420px;
+letter-spacing:-2px;
 
-            background: #2BC4C4;
+max-width:650px;
 
-            filter: blur(170px);
+}
 
-            opacity: .12;
 
-            border-radius: 50%;
 
-        }
+.hero-text{
 
+margin-top:24px;
 
-        /* TEXT */
+font-size:18px;
 
-        .hero-title {
+line-height:1.8;
 
-            font-size: 72px;
+color:var(--text-soft);
 
-            font-weight: 800;
+max-width:540px;
 
-            line-height: 1.05;
+}
 
-            letter-spacing: -2px;
 
-        }
 
-        .hero-text {
+/* ======================
+IMAGE
+====================== */
 
-            margin-top: 28px;
+.hero-visual{
 
-            font-size: 18px;
+position:relative;
 
-            line-height: 1.9;
+display:flex;
 
-            color: #647272;
+justify-content:center;
 
-        }
+align-items:center;
 
+}
 
-        /* IMAGE */
 
-        .hero-visual {
 
-            display: flex;
+.hero-image{
 
-            justify-content: center;
+width:100%;
 
-            align-items: center;
+max-width:560px;
 
-            position: relative;
+height:430px;
 
-        }
+object-fit:cover;
 
-        .hero-image {
+border-radius:30px;
 
-            width: 100%;
+box-shadow:
 
-            max-width: 560px;
+0 20px 50px rgba(0,43,43,.10);
 
-            border-radius: 42px;
+transition:.5s;
 
-            box-shadow:
-                0 30px 60px rgba(0, 43, 43, .12);
+}
 
-            transition: .6s;
 
-        }
 
-        .hero-image:hover {
+.hero-image:hover{
 
-            transform:
-                translateY(-8px);
+transform:
 
-        }
+translateY(-8px);
 
+}
 
-        /* ==================
+
+
+/* ======================
+MESH BACKGROUND
+====================== */
+
+.mesh-left{
+
+position:absolute;
+
+width:450px;
+
+height:450px;
+
+left:-180px;
+
+top:100px;
+
+background:#002B2B;
+
+opacity:.06;
+
+filter:blur(160px);
+
+border-radius:50%;
+
+}
+
+
+
+.mesh-right{
+
+position:absolute;
+
+width:420px;
+
+height:420px;
+
+right:-120px;
+
+bottom:50px;
+
+background:#2BC4C4;
+
+opacity:.12;
+
+filter:blur(160px);
+
+border-radius:50%;
+
+}
+
+
+
+/* ======================
 SECTION
-================== */
+====================== */
 
-        .section {
+.section{
 
-            padding: 110px 0;
+padding:100px 0;
 
-        }
+}
 
 
-        /* ==================
+
+/* ======================
 CARD
-================== */
+====================== */
 
-        .stat-card,
-        .category-card {
+.stat-card,
 
-            background: white;
+.category-card{
 
-            padding: 42px;
+background:#FFFFFF;
 
-            border-radius: 28px;
+padding:36px;
 
-            box-shadow:
-                0 10px 30px rgba(0, 0, 0, .05);
+border-radius:24px;
 
-        }
+box-shadow:
 
-        .category-card {
+0 8px 25px rgba(0,0,0,.05);
 
-            transition: .4s;
+transition:.3s;
 
-        }
-
-        .category-card:hover {
-
-            transform:
-                translateY(-8px);
-
-        }
-
-
-        /* ==================
-TESTI
-================== */
-
-        .testimonial {
-
-            padding: 80px;
-
-            border-radius: 34px;
-
-            background:
-                linear-gradient(135deg,
-                    #002B2B,
-                    #004545);
-
-            color: white;
-
-        }
-
-
-        /* ==================
-SCROLL ANIMATION
-================== */
-
-        .fade-up {
-
-            opacity: 0;
-
-            transform:
-                translateY(70px);
-
-            transition:
-
-                opacity 1s ease,
-
-                transform 1s ease;
-
-        }
-
-        .fade-up.show {
-
-            opacity: 1;
-
-            transform:
-                translateY(0);
-
-        }
+}
 
 
 
-        /* HERO FIRST LOAD */
+.category-card:hover{
 
-        @keyframes heroLoad {
+transform:
 
-            from {
+translateY(-8px);
 
-                opacity: 0;
-
-                transform:
-                    translateY(30px);
-
-            }
-
-            to {
-
-                opacity: 1;
-
-                transform:
-                    translateY(0);
-
-            }
-
-        }
+}
 
 
-        /* ==================
+
+.stat-card h2{
+
+font-size:50px;
+
+font-weight:800;
+
+color:var(--primary);
+
+}
+
+
+
+.icon{
+
+font-size:55px;
+
+margin-bottom:20px;
+
+}
+
+
+
+/* ======================
+TESTIMONIAL
+====================== */
+
+.testimonial{
+
+padding:80px;
+
+border-radius:30px;
+
+background:
+
+linear-gradient(
+
+135deg,
+
+#002B2B,
+
+#004545
+
+);
+
+color:#FFFFFF;
+
+}
+
+
+
+/* ======================
+FOOTER
+====================== */
+
+footer{
+
+padding:50px 0;
+
+text-align:center;
+
+color:#667575;
+
+}
+
+
+
+/* ======================
+ANIMATION
+====================== */
+
+.fade-up{
+
+opacity:0;
+
+transform:
+
+translateY(50px);
+
+transition:
+
+all .9s ease;
+
+}
+
+
+
+.fade-up.show{
+
+opacity:1;
+
+transform:
+
+translateY(0);
+
+}
+
+
+
+@keyframes heroLoad{
+
+from{
+
+opacity:0;
+
+transform:
+
+translateY(30px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:
+
+translateY(0);
+
+}
+
+}
+
+
+
+/* ======================
 RESPONSIVE
-================== */
+====================== */
 
-        @media(max-width:992px) {
+@media(max-width:992px){
 
-            .hero-title {
+.hero-title{
 
-                font-size: 48px;
+font-size:46px;
 
-                letter-spacing: -1px;
+letter-spacing:-1px;
 
-            }
+}
 
-            .hero-text {
 
-                font-size: 16px;
 
-            }
+.hero-text{
 
-            .hero-visual {
+font-size:16px;
 
-                margin-top: 60px;
+}
 
-            }
 
-            .hero-image {
 
-                border-radius: 28px;
+.hero-image{
 
-            }
+height:auto;
 
-        }
-    </style>
+max-width:100%;
+
+}
+
+
+
+.hero-visual{
+
+margin-top:50px;
+
+}
+
+
+
+.nav-link{
+
+margin-left:12px;
+
+}
+
+
+
+.mesh-left,
+
+.mesh-right{
+
+display:none;
+
+}
+
+}
+
+</style>
 
 </head>
 
 <body>
 
-    <nav class="navbar navbar-expand-lg">
 
-        <div class="container">
 
-            <a class="navbar-brand">
+<nav class="navbar navbar-expand-lg">
 
-                ScholarHub
+<div class="container">
 
-            </a>
+<a class="navbar-brand" href="/">
 
-            <div>
+ScholarHub
 
-                <a class="nav-link d-inline" href="/">
-                    Home
-                </a>
-
-                <a class="nav-link d-inline" href="/program">
-                    Program
-                </a>
-
-                <a class="nav-link d-inline" href="/login">
-                    Login
-                </a>
-
-            </div>
-
-        </div>
-
-    </nav>
-
-    @yield('content')
+</a>
 
 
 
-    <script>
+<div>
 
-        const observer =
-            new IntersectionObserver(
+<a class="nav-link d-inline" href="/">
 
-                (entries) => {
+Beranda
 
-                    entries.forEach(entry => {
+</a>
 
-                        if (entry.isIntersecting) {
+<a class="nav-link d-inline" href="/program">
 
-                            entry.target.classList.add("show");
+Program
 
-                        }
+</a>
 
-                    });
+<a class="nav-link d-inline" href="#cara-kerja">
 
-                },
+Cara Kerja
 
-                {
+</a>
 
-                    threshold: 0.18
+<a class="nav-link d-inline" href="/contact">
 
-                }
+Kontak
 
-            );
+</a>
+
+<a href="#" class="btn btn-main ms-4">
+
+Masuk
+
+</a>
+
+</div>
+
+</div>
+
+</nav>
 
 
-        document
-            .querySelectorAll(
 
-                ".fade-up"
+@yield('content')
 
-            )
 
-            .forEach(
 
-                (el) => observer.observe(el)
+<script>
 
-            );
+const observer =
 
-    </script>
+new IntersectionObserver(
+
+(entries)=>{
+
+entries.forEach(
+
+(entry)=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add('show');
+
+}
+
+}
+
+);
+
+},
+
+{
+
+threshold:0.15
+
+}
+
+);
+
+
+
+document
+
+.querySelectorAll('.fade-up')
+
+.forEach(
+
+(el)=>observer.observe(el)
+
+);
+
+</script>
 
 </body>
 
 </html>
+```

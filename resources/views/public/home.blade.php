@@ -1,4 +1,4 @@
-```php
+
 @extends('layouts.app')
 
 @section('content')
@@ -519,4 +519,3 @@
     </footer>
 
 @endsection
-```

@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 @section('content')
@@ -10,45 +11,70 @@
 
                 <div class="category-card">
 
-                    <h2 class="fw-bold mb-4">
+                    <h2 class="fw-bold text-center mb-3">
 
                         Login
 
                     </h2>
 
-                    <form>
+                    <p class="text-center text-muted mb-5">
 
-                        <div class="mb-3">
+                        Masuk untuk melanjutkan pendaftaran beasiswa.
 
-                            <label>
+                    </p>
+
+
+                    <form action="/login" method="POST">
+
+                        @csrf
+
+
+                        <div class="mb-4">
+
+                            <label class="form-label">
 
                                 Email
 
                             </label>
 
-                            <input type="email" class="form-control">
+                            <input type="email" name="email" class="form-control" required>
 
                         </div>
 
-                        <div class="mb-3">
 
-                            <label>
+                        <div class="mb-4">
+
+                            <label class="form-label">
 
                                 Password
 
                             </label>
 
-                            <input type="password" class="form-control">
+                            <input type="password" name="password" class="form-control" required>
 
                         </div>
 
-                        <button class="btn btn-main">
+
+                        <button type="submit" class="btn btn-main w-100">
 
                             Masuk
 
                         </button>
 
                     </form>
+
+
+                    <div class="text-center mt-4">
+
+                        Belum punya akun?
+
+                        <a href="/register" class="fw-bold text-decoration-none">
+
+                            Daftar Akun
+
+                        </a>
+
+                    </div>
 
                 </div>
 

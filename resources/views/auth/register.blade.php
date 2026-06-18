@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 @section('content')
@@ -10,57 +11,83 @@
 
                 <div class="category-card">
 
-                    <h2 class="fw-bold mb-4">
+                    <h2 class="fw-bold text-center mb-3">
 
-                        Buat Akun
+                        Registrasi Akun
 
                     </h2>
 
-                    <form>
+                    <p class="text-center text-muted mb-5">
 
-                        <div class="mb-3">
+                        Buat akun terlebih dahulu untuk mendaftar beasiswa.
 
-                            <label>
+                    </p>
+
+
+                    <form action="/register" method="POST">
+
+                        @csrf
+
+
+                        <div class="mb-4">
+
+                            <label class="form-label">
 
                                 Nama Lengkap
 
                             </label>
 
-                            <input type="text" class="form-control">
+                            <input type="text" name="name" class="form-control" required>
 
                         </div>
 
-                        <div class="mb-3">
 
-                            <label>
+                        <div class="mb-4">
+
+                            <label class="form-label">
 
                                 Email
 
                             </label>
 
-                            <input type="email" class="form-control">
+                            <input type="email" name="email" class="form-control" required>
 
                         </div>
 
-                        <div class="mb-3">
 
-                            <label>
+                        <div class="mb-4">
+
+                            <label class="form-label">
 
                                 Password
 
                             </label>
 
-                            <input type="password" class="form-control">
+                            <input type="password" name="password" class="form-control" required>
 
                         </div>
 
-                        <button class="btn btn-main">
+
+                        <button type="submit" class="btn btn-main w-100">
 
                             Daftar
 
                         </button>
 
                     </form>
+
+
+                    <div class="text-center mt-4">
+
+                        Sudah punya akun?
+
+                        <a href="/login" class="fw-bold text-decoration-none">
+
+                            Login
+
+                        </a>
+
+                    </div>
 
                 </div>
 

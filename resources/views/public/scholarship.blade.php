@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 @section('content')
@@ -10,7 +11,7 @@
 
                 <span class="hero-badge">
 
-                    Pilih Jalur Pendaftaran
+                    Program Beasiswa
 
                 </span>
 
@@ -22,11 +23,12 @@
 
                 <p class="hero-text mx-auto">
 
-                    Silakan pilih jalur yang sesuai dengan kemampuan dan prestasimu.
+                    Pilih jalur pendaftaran yang sesuai dengan prestasi yang kamu miliki.
 
                 </p>
 
             </div>
+
 
 
             <div class="row g-5 justify-content-center">
@@ -49,23 +51,37 @@
 
                         </h3>
 
+                        <br>
+
                         <p>
 
                             Untuk mahasiswa yang memiliki prestasi akademik.
 
                         </p>
 
-                        <ul class="list-unstyled my-4">
+                        <hr>
 
-                            <li>✔ Input IPK</li>
+                        <p>
 
-                            <li>✔ Upload Transkrip</li>
+                            ✔ Input IPK
 
-                            <li>✔ Upload Sertifikat</li>
+                        </p>
 
-                        </ul>
+                        <p>
 
-                        <a href="/register" class="btn btn-main">
+                            ✔ Upload Transkrip Nilai
+
+                        </p>
+
+                        <p>
+
+                            ✔ Upload Sertifikat Akademik
+
+                        </p>
+
+                        <br>
+
+                        <a href="/login" class="btn btn-main">
 
                             Pilih Jalur
 
@@ -74,6 +90,8 @@
                     </div>
 
                 </div>
+
+
 
 
                 <!-- NON AKADEMIK -->
@@ -94,23 +112,37 @@
 
                         </h3>
 
+                        <br>
+
                         <p>
 
                             Untuk mahasiswa yang memiliki prestasi non akademik.
 
                         </p>
 
-                        <ul class="list-unstyled my-4">
+                        <hr>
 
-                            <li>✔ Upload Portofolio</li>
+                        <p>
 
-                            <li>✔ Upload Prestasi</li>
+                            ✔ Upload Portofolio
 
-                            <li>✔ Upload Sertifikat</li>
+                        </p>
 
-                        </ul>
+                        <p>
 
-                        <a href="/register" class="btn btn-main">
+                            ✔ Upload Sertifikat Prestasi
+
+                        </p>
+
+                        <p>
+
+                            ✔ Upload Sertifikat Organisasi
+
+                        </p>
+
+                        <br>
+
+                        <a href="/login" class="btn btn-main">
 
                             Pilih Jalur
 

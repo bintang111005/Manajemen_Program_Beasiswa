@@ -58,3 +58,13 @@ Route::view(
     '/admin',
     'admin.dashboard'
 );
+
+Route::view(
+    '/register',
+    'auth.register'
+);
+
+Route::view(
+    '/login',
+    'auth.login'
+);

@@ -1,50 +1,41 @@
-```php
 @extends('layouts.app')
 
 @section('content')
 
-    <section class="hero-section">
-
-        <div class="container text-center">
-
-            <h5 class="text-primary">
-
-                Program Beasiswa
-
-            </h5>
-
-            <h1 class="hero-title mx-auto mt-4">
-
-                Pilih Jalur Pendaftaran
-
-            </h1>
-
-            <p class="hero-text mx-auto">
-
-                Tentukan jalur beasiswa yang sesuai dengan prestasi yang kamu miliki.
-
-            </p>
-
-        </div>
-
-    </section>
-
-
-
-
-    <section class="section fade-up">
+    <section class="section">
 
         <div class="container">
 
+            <div class="text-center mb-5">
+
+                <span class="hero-badge">
+
+                    Pilih Jalur Pendaftaran
+
+                </span>
+
+                <h1 class="hero-title-center mt-4">
+
+                    Pilih Jalur Beasiswa
+
+                </h1>
+
+                <p class="hero-text mx-auto">
+
+                    Silakan pilih jalur yang sesuai dengan kemampuan dan prestasimu.
+
+                </p>
+
+            </div>
+
+
             <div class="row g-5 justify-content-center">
-
-
 
                 <!-- AKADEMIK -->
 
                 <div class="col-lg-5">
 
-                    <div class="category-card h-100">
+                    <div class="category-card text-center h-100">
 
                         <div class="icon">
 
@@ -52,33 +43,29 @@
 
                         </div>
 
-                        <h2>
+                        <h3>
 
                             Jalur Akademik
 
-                        </h2>
-
-                        <br>
+                        </h3>
 
                         <p>
 
-                            Berbasis nilai akademik dan pencapaian pendidikan.
+                            Untuk mahasiswa yang memiliki prestasi akademik.
 
                         </p>
 
-                        <hr>
+                        <ul class="list-unstyled my-4">
 
-                        <p>✔ Input IPK</p>
+                            <li>✔ Input IPK</li>
 
-                        <p>✔ Upload Transkrip</p>
+                            <li>✔ Upload Transkrip</li>
 
-                        <p>✔ Sertifikat Akademik</p>
+                            <li>✔ Upload Sertifikat</li>
 
-                        <p>✔ Esai Motivasi</p>
+                        </ul>
 
-                        <br>
-
-                        <a href="/applications/create" class="btn btn-main">
+                        <a href="/register" class="btn btn-main">
 
                             Pilih Jalur
 
@@ -89,14 +76,11 @@
                 </div>
 
 
-
-
-
                 <!-- NON AKADEMIK -->
 
                 <div class="col-lg-5">
 
-                    <div class="category-card h-100">
+                    <div class="category-card text-center h-100">
 
                         <div class="icon">
 
@@ -104,33 +88,29 @@
 
                         </div>
 
-                        <h2>
+                        <h3>
 
                             Jalur Non Akademik
 
-                        </h2>
-
-                        <br>
+                        </h3>
 
                         <p>
 
-                            Berbasis minat, bakat, organisasi, dan prestasi.
+                            Untuk mahasiswa yang memiliki prestasi non akademik.
 
                         </p>
 
-                        <hr>
+                        <ul class="list-unstyled my-4">
 
-                        <p>✔ Upload Portofolio</p>
+                            <li>✔ Upload Portofolio</li>
 
-                        <p>✔ Sertifikat Prestasi</p>
+                            <li>✔ Upload Prestasi</li>
 
-                        <p>✔ Sertifikat Organisasi</p>
+                            <li>✔ Upload Sertifikat</li>
 
-                        <p>✔ Esai Motivasi</p>
+                        </ul>
 
-                        <br>
-
-                        <a href="/applications/create" class="btn btn-main">
+                        <a href="/register" class="btn btn-main">
 
                             Pilih Jalur
 
@@ -147,4 +127,3 @@
     </section>
 
 @endsection
-```

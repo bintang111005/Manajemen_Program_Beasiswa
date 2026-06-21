@@ -304,16 +304,8 @@ PENGATURAN
 
 Route::get(
 
-    '/admin/settings',
+'/admin/settings',
 
-    function () {
-
-        return view(
-
-            'admin.settings'
-
-        );
-
-    }
+[AuthController::class,'settings']
 
 );

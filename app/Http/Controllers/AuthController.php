@@ -212,5 +212,15 @@ class AuthController extends Controller
     ]);
 
 }
+public function settings()
+{
+
+    return view(
+
+        'admin.settings'
+
+    );
+
+}
 
 }

@@ -2,7 +2,7 @@
 
 @section('title')
 
-    Data Pendaftar
+    Verifikasi Berkas
 
 @endsection
 
@@ -15,7 +15,7 @@
 
         <h4 class="mb-4">
 
-            Daftar Mahasiswa Pendaftar
+            Daftar Berkas Menunggu Verifikasi
 
         </h4>
 
@@ -38,10 +38,6 @@
                         <th>NIM</th>
 
                         <th>Program</th>
-
-                        <th>Semester</th>
-
-                        <th>IPK</th>
 
                         <th>Status</th>
 
@@ -92,59 +88,11 @@
 
                             <td>
 
-                                {{ $application->semester }}
+                                <span class="badge bg-warning">
 
-                            </td>
+                                    Menunggu Verifikasi
 
-
-                            <td>
-
-                                {{ $application->gpa }}
-
-                            </td>
-
-
-                            <td>
-
-
-                                @if($application->status == 'submitted')
-
-                                    <span class="badge bg-warning">
-
-                                        Menunggu
-
-                                    </span>
-
-
-                                @elseif($application->status == 'reviewing')
-
-                                    <span class="badge bg-info">
-
-                                        Diproses
-
-                                    </span>
-
-
-                                @elseif($application->status == 'awarded')
-
-                                    <span class="badge bg-success">
-
-                                        Diterima
-
-                                    </span>
-
-
-                                @else
-
-                                    <span class="badge bg-danger">
-
-                                        Ditolak
-
-                                    </span>
-
-
-                                @endif
-
+                                </span>
 
                             </td>
 
@@ -154,7 +102,7 @@
 
                                 <a href="/admin/verification/{{ $application->id }}" class="btn btn-primary btn-sm">
 
-                                    📄 Lihat
+                                    📄 Verifikasi
 
                                 </a>
 
@@ -171,9 +119,11 @@
                         <tr>
 
 
-                            <td colspan="8" class="text-center py-4">
+                            <td colspan="6" class="text-center py-4">
 
-                                Belum ada data pendaftar.
+
+                                Tidak ada berkas yang menunggu verifikasi.
+
 
                             </td>
 

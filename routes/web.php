@@ -2,9 +2,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
 use App\Models\Scholarship;
+
 use App\Http\Controllers\AuthController;
+
 use App\Http\Controllers\ScholarshipController;
+
 use App\Http\Controllers\ScholarshipApplicationController;
 
 
@@ -29,6 +33,7 @@ Route::get('/', function () {
     );
 
 });
+
 
 Route::view(
 
@@ -60,6 +65,7 @@ Route::view(
 /* ======================
 AUTH
 ====================== */
+
 Route::get(
 
     '/admin-login',
@@ -76,63 +82,57 @@ Route::get(
 
 );
 
+
 Route::post(
 
     '/admin-login',
 
-    [AuthController::class, 'adminLogin']
+    [AuthController::class,'adminLogin']
 
 );
+
 
 Route::get(
 
     '/register',
 
-    [AuthController::class, 'showRegister']
+    [AuthController::class,'showRegister']
 
 );
+
 
 Route::post(
 
     '/register',
 
-    [AuthController::class, 'store']
+    [AuthController::class,'store']
 
 );
+
 
 Route::get(
 
     '/login',
 
-    [AuthController::class, 'showLogin']
+    [AuthController::class,'showLogin']
 
 );
+
 
 Route::post(
 
     '/login',
 
-    [AuthController::class, 'login']
+    [AuthController::class,'login']
 
 );
 
-/* ======================
-UPLOAD DOKUMEN
-====================== */
 
-Route::get(
+Route::post(
 
-    '/upload-document',
+    '/logout',
 
-    function () {
-
-        return view(
-
-            'applications.upload'
-
-        );
-
-    }
+    [AuthController::class,'logout']
 
 );
 
@@ -161,11 +161,34 @@ Route::resource(
     ScholarshipApplicationController::class
 
 );
+
+
 Route::post(
 
     '/upload-document',
 
-    [ScholarshipApplicationController::class, 'uploadDocuments']
+    [ScholarshipApplicationController::class,'uploadDocuments']
+
+);
+
+
+/* ======================
+UPLOAD DOKUMEN
+====================== */
+
+Route::get(
+
+    '/upload-document',
+
+    function () {
+
+        return view(
+
+            'applications.upload'
+
+        );
+
+    }
 
 );
 
@@ -178,7 +201,7 @@ Route::get(
 
     '/student',
 
-    [ScholarshipApplicationController::class, 'studentDashboard']
+    [ScholarshipApplicationController::class,'studentDashboard']
 
 );
 
@@ -209,92 +232,62 @@ Route::get(
 
     '/admin',
 
-    [ScholarshipApplicationController::class, 'adminDashboard']
+    [ScholarshipApplicationController::class,'adminDashboard']
 
 );
+
+
 /* ======================
-ADMIN PROGRAM BEASISWA
+PROGRAM BEASISWA
 ====================== */
 
 Route::get(
 
-'/admin/program',
+    '/admin/program',
 
-[ScholarshipController::class,'index']
+    [ScholarshipController::class,'index']
 
 );
 
+
+/* ======================
+DATA PENDAFTAR
+====================== */
 
 Route::get(
 
-'/admin/program/create',
+    '/admin/applicants',
 
-[ScholarshipController::class,'create']
-
-);
-
-
-Route::post(
-
-'/admin/program',
-
-[ScholarshipController::class,'store']
+    [ScholarshipApplicationController::class,'applicants']
 
 );
 
 
-Route::get(
-
-'/admin/program/{scholarship}/edit',
-
-[ScholarshipController::class,'edit']
-
-);
-
-
-Route::put(
-
-'/admin/program/{scholarship}',
-
-[ScholarshipController::class,'update']
-
-);
-
-
-Route::delete(
-
-'/admin/program/{scholarship}',
-
-[ScholarshipController::class,'destroy']
-
-);
-
-
-Route::get(
-
-'/admin/applicants',
-
-[ScholarshipApplicationController::class,'applicants']
-
-);
-
+/* ======================
+VERIFIKASI BERKAS
+====================== */
 
 Route::get(
 
     '/admin/verification',
 
-    function () {
-
-        return view(
-
-            'admin.verification'
-
-        );
-
-    }
+    [ScholarshipApplicationController::class,'verification']
 
 );
 
+
+Route::get(
+
+    '/admin/verification/{application}',
+
+    [ScholarshipApplicationController::class,'show']
+
+);
+
+
+/* ======================
+LAPORAN
+====================== */
 
 Route::get(
 
@@ -312,6 +305,10 @@ Route::get(
 
 );
 
+
+/* ======================
+PENGATURAN
+====================== */
 
 Route::get(
 

@@ -2,43 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Scholarship;
 use App\Models\ScholarshipApplication;
 use Illuminate\Http\Request;
-use App\Models\Scholarship;
 
 class ScholarshipApplicationController extends Controller
 {
 
-    /**
-     * Display a listing of the resource.
-     */
-
     public function index()
     {
 
-        $applications = ScholarshipApplication::latest()
+        return redirect(
 
-            ->paginate(10);
-
-
-        return view(
-
-            'applications.index',
-
-            compact(
-
-                'applications'
-
-            )
+            '/admin/applicants'
 
         );
 
     }
 
-
-    /**
-     * Show the form for creating a new resource.
-     */
 
     public function create()
     {
@@ -50,11 +31,6 @@ class ScholarshipApplicationController extends Controller
         );
 
     }
-
-
-    /**
-     * Store a newly created resource.
-     */
 
 
     public function store(Request $request)
@@ -88,17 +64,20 @@ class ScholarshipApplicationController extends Controller
         );
 
 
+        $scholarship = Scholarship::find(
+
+            $scholarshipId
+
+        );
+
+
         ScholarshipApplication::create([
 
             'scholarship_id' => $scholarshipId,
 
             'user_id' => auth()->id(),
 
-            'program' => Scholarship::find(
-
-                $scholarshipId
-
-            )->name,
+            'program' => $scholarship->name,
 
             'nim' => $request->nim,
 
@@ -132,6 +111,7 @@ class ScholarshipApplicationController extends Controller
         );
 
     }
+
 
     public function uploadDocuments(Request $request)
     {
@@ -297,11 +277,6 @@ class ScholarshipApplicationController extends Controller
     }
 
 
-
-    /**
-     * Display the specified resource.
-     */
-
     public function show(
 
         ScholarshipApplication $application
@@ -310,18 +285,18 @@ class ScholarshipApplicationController extends Controller
 
         return view(
 
-            'applications.show',
+            'admin.verification',
 
-            compact('application')
+            compact(
+
+                'application'
+
+            )
 
         );
 
     }
 
-
-    /**
-     * Show the form for editing.
-     */
 
     public function edit(
 
@@ -333,16 +308,16 @@ class ScholarshipApplicationController extends Controller
 
             'applications.edit',
 
-            compact('application')
+            compact(
+
+                'application'
+
+            )
 
         );
 
     }
 
-
-    /**
-     * Update resource.
-     */
 
     public function update(
 
@@ -361,13 +336,11 @@ class ScholarshipApplicationController extends Controller
         ]);
 
 
-        return redirect()
+        return redirect(
 
-            ->route(
+            '/admin/applicants'
 
-                'applications.index'
-
-            )
+        )
 
             ->with(
 
@@ -378,6 +351,7 @@ class ScholarshipApplicationController extends Controller
             );
 
     }
+
 
     public function studentDashboard()
     {
@@ -399,7 +373,11 @@ class ScholarshipApplicationController extends Controller
 
             'student.dashboard',
 
-            compact('application')
+            compact(
+
+                'application'
+
+            )
 
         );
 
@@ -453,6 +431,7 @@ class ScholarshipApplicationController extends Controller
 
     }
 
+
     public function applicants()
     {
 
@@ -481,9 +460,43 @@ class ScholarshipApplicationController extends Controller
 
     }
 
-    /**
-     * Delete resource.
-     */
+
+    public function verification()
+    {
+
+        $applications = ScholarshipApplication::with(
+
+            'user'
+
+        )
+
+            ->where(
+
+                'status',
+
+                'submitted'
+
+            )
+
+            ->latest()
+
+            ->get();
+
+
+        return view(
+
+            'admin.verification-list',
+
+            compact(
+
+                'applications'
+
+            )
+
+        );
+
+    }
+
 
     public function destroy(
 
@@ -494,13 +507,11 @@ class ScholarshipApplicationController extends Controller
         $application->delete();
 
 
-        return redirect()
+        return redirect(
 
-            ->route(
+            '/admin/applicants'
 
-                'applications.index'
-
-            )
+        )
 
             ->with(
 

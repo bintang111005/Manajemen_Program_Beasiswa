@@ -6,53 +6,37 @@
 
         <div class="container">
 
-            <div class="col-lg-6 mx-auto">
+            <div class="col-lg-5 mx-auto">
 
                 <div class="category-card">
 
                     <h2 class="fw-bold text-center mb-3">
 
-                        Registrasi Akun
+                        Login Admin
 
                     </h2>
 
                     <p class="text-center text-muted mb-5">
 
-                        Buat akun terlebih dahulu untuk mendaftar beasiswa.
+                        Masuk sebagai administrator.
 
                     </p>
 
 
-                    <form action="/register" method="POST">
+                    <form action="/admin-login" method="POST">
 
                         @csrf
 
 
-                        <input type="hidden" name="program" value="{{ session('program') }}">
-
-
                         <div class="mb-4">
 
                             <label class="form-label">
 
-                                Nama Lengkap
+                                Username
 
                             </label>
 
-                            <input type="text" name="name" class="form-control" required>
-
-                        </div>
-
-
-                        <div class="mb-4">
-
-                            <label class="form-label">
-
-                                Email
-
-                            </label>
-
-                            <input type="email" name="email" class="form-control" required>
+                            <input type="text" name="username" class="form-control" required>
 
                         </div>
 
@@ -72,24 +56,32 @@
 
                         <button type="submit" class="btn btn-main w-100">
 
-                            Daftar
+                            Masuk
 
                         </button>
+
 
                     </form>
 
 
-                    <div class="text-center mt-4">
+                    <div class="mt-4">
 
-                        Sudah punya akun?
+                        <small>
 
-                        <a href="/login?program={{ session('program') }}" class="fw-bold text-decoration-none">
+                            Username : admin
 
-                            Login
+                        </small>
 
-                        </a>
+                        <br>
+
+                        <small>
+
+                            Password : 123
+
+                        </small>
 
                     </div>
+
 
                 </div>
 

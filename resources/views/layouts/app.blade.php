@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="id">
 
@@ -651,7 +650,7 @@ RESPONSIVE
 
                 </a>
 
-                <a href="#" class="btn btn-main ms-4">
+                <a href="/admin-login" class="btn btn-main ms-4">
 
                     Masuk
 

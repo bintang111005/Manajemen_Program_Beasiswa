@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 
 @section('content')
@@ -27,6 +26,9 @@
                     <form action="/login" method="POST">
 
                         @csrf
+
+
+                        <input type="hidden" name="program" value="{{ session('program') }}">
 
 
                         <div class="mb-4">
@@ -68,7 +70,7 @@
 
                         Belum punya akun?
 
-                        <a href="/register" class="fw-bold text-decoration-none">
+                        <a href="/register?program={{ session('program') }}" class="fw-bold text-decoration-none">
 
                             Daftar Akun
 

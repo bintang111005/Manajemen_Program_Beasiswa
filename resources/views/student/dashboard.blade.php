@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 
 @section('content')
@@ -14,79 +13,152 @@
             </h1>
 
 
-            <div class="row g-4">
+            <div class="category-card p-5">
 
-                <div class="col-md-4">
 
-                    <div class="stat-card">
+                <!-- DATA MAHASISWA -->
 
-                        <h3>
+                <h3 class="mb-4">
 
-                            Status Pendaftaran
+                    👤 Data Mahasiswa
 
-                        </h3>
+                </h3>
 
-                        <br>
 
-                        <span class="badge bg-warning">
+                <div class="mb-3">
 
-                            Menunggu Review
+                    <strong>Nama :</strong>
 
-                        </span>
+                    {{ auth()->user()->name }}
 
-                    </div>
+                </div>
+
+
+                <div class="mb-3">
+
+                    <strong>NIM :</strong>
+
+                    {{ $application->nim }}
+
+                </div>
+
+
+                <div class="mb-3">
+
+                    <strong>Program Studi :</strong>
+
+                    {{ $application->major }}
+
+                </div>
+
+
+                <div class="mb-3">
+
+                    <strong>Jenjang :</strong>
+
+                    {{ $application->jenjang }}
+
+                </div>
+
+
+                <div class="mb-5">
+
+                    <strong>Semester :</strong>
+
+                    {{ $application->semester }}
 
                 </div>
 
 
 
-                <div class="col-md-4">
+                <hr class="my-5">
 
-                    <div class="stat-card">
 
-                        <h3>
 
-                            Jalur Beasiswa
+                <!-- INFORMASI BEASISWA -->
 
-                        </h3>
+                <h3 class="mb-4">
 
-                        <br>
+                    🎓 Informasi Beasiswa
 
-                        <p>
+                </h3>
 
-                            Akademik
 
-                        </p>
+                <div class="mb-3">
 
-                    </div>
+                    <strong>Program :</strong>
+
+                    {{ ucfirst($application->program) }}
+
+                </div>
+
+
+                <div class="mb-3">
+
+                    <strong>Status :</strong>
+
+                    <span class="badge bg-warning">
+
+                        {{ ucfirst($application->status) }}
+
+                    </span>
+
+                </div>
+
+
+                <div class="mb-5">
+
+                    <strong>Tanggal Daftar :</strong>
+
+                    {{ $application->created_at->format('d M Y') }}
 
                 </div>
 
 
 
-                <div class="col-md-4">
+                <hr class="my-5">
 
-                    <div class="stat-card">
 
-                        <h3>
 
-                            Jenjang
+                <!-- STATUS BERKAS -->
 
-                        </h3>
+                <h3 class="mb-4">
 
-                        <br>
+                    📄 Status Berkas
 
-                        <p>
+                </h3>
 
-                            S1
 
-                        </p>
+                <p>
 
-                    </div>
+                    ✅ Foto Diri
 
-                </div>
+                </p>
+
+
+                <p>
+
+                    ✅ KTP
+
+                </p>
+
+
+                <p>
+
+                    ✅ KTM
+
+                </p>
+
+
+                <p>
+
+                    ✅ Dokumen Pendukung
+
+                </p>
+
 
             </div>
+
 
 
             <div class="mt-5">
@@ -98,6 +170,7 @@
                 </a>
 
             </div>
+
 
         </div>
 

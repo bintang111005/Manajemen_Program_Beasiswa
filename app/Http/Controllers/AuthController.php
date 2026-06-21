@@ -9,9 +9,6 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    /* ======================
-    HALAMAN REGISTER
-    ====================== */
 
     public function showRegister()
     {
@@ -19,22 +16,27 @@ class AuthController extends Controller
     }
 
 
-    /* ======================
-    HALAMAN LOGIN
-    ====================== */
-
-    public function showLogin()
+    public function showLogin(Request $request)
     {
+
+        if ($request->has('program')) {
+
+            session([
+
+                'program' => $request->program
+
+            ]);
+
+        }
+
         return view('auth.login');
+
     }
 
 
-    /* ======================
-    SIMPAN DATA REGISTER
-    ====================== */
-
     public function store(Request $request)
     {
+
         $request->validate([
 
             'name' => 'required|string|max:255',
@@ -61,24 +63,33 @@ class AuthController extends Controller
         ]);
 
 
+        if ($request->filled('program')) {
+
+            session([
+
+                'program' => $request->program
+
+            ]);
+
+        }
+
+
         return redirect('/login')
 
             ->with(
 
                 'success',
 
-                'Registrasi berhasil. Silakan login.'
+                'Registrasi berhasil, silakan login.'
 
             );
+
     }
 
 
-    /* ======================
-    PROSES LOGIN
-    ====================== */
-
     public function login(Request $request)
     {
+
         $credentials = $request->validate([
 
             'email' => 'required|email',
@@ -88,15 +99,18 @@ class AuthController extends Controller
         ]);
 
 
-        if (
+        if ($request->filled('program')) {
 
-            Auth::attempt(
+            session([
 
-                $credentials
+                'program' => $request->program
 
-            )
+            ]);
 
-        ) {
+        }
+
+
+        if (Auth::attempt($credentials)) {
 
             $request
 
@@ -129,14 +143,10 @@ class AuthController extends Controller
     }
 
 
-    /* ======================
-    LOGOUT
-    ====================== */
-
     public function logout(Request $request)
     {
-        Auth::logout();
 
+        Auth::logout();
 
         $request
 
@@ -144,15 +154,63 @@ class AuthController extends Controller
 
             ->invalidate();
 
-
         $request
 
             ->session()
 
             ->regenerateToken();
 
-
         return redirect('/');
 
     }
+    public function adminLogin(Request $request)
+{
+
+    $request->validate([
+
+        'username' => 'required',
+
+        'password' => 'required'
+
+    ]);
+
+
+    if (
+
+        $request->username == 'admin'
+
+        &&
+
+        $request->password == '123'
+
+    ) {
+
+        session([
+
+            'admin' => true
+
+        ]);
+
+
+        return redirect(
+
+            '/admin'
+
+        );
+
+    }
+
+
+    return back()
+
+    ->withErrors([
+
+        'username' =>
+
+        'Username atau password salah.'
+
+    ]);
+
+}
+
 }

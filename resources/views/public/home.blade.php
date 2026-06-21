@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 
 @section('content')
@@ -46,7 +45,7 @@
 
                     <div class="mt-5 d-flex flex-wrap gap-3">
 
-                        <a href="#kategori-beasiswa" class="btn btn-main">
+                        <a href="#program" class="btn btn-main">
 
                             Cari Beasiswa
 
@@ -184,152 +183,152 @@
     </section>
 
 
+    <!-- PROGRAM BEASISWA -->
 
+    <section id="program" class="section fade-up">
 
-    ```php
-    <!-- KATEGORI -->
+        <div class="container">
 
-    <section id="kategori-beasiswa" class="section fade-up"></section>
+            <div class="text-center mb-5">
 
-    <div class="container text-center">
+                <h5 class="text-primary">
 
-        <h5 class="text-primary">
+                    Program Beasiswa
 
-            Kategori Beasiswa
+                </h5>
 
-        </h5>
+                <h2 class="fw-bold">
 
-        <h2 class="fw-bold mb-5">
+                    Pilih Program Beasiswa
 
-            Pilih Jenjang Pendidikan
+                </h2>
 
-        </h2>
+                <p class="hero-text mx-auto">
 
-        <p class="hero-text mx-auto mb-5">
+                    Temukan program beasiswa yang sesuai dengan kemampuan dan kebutuhanmu.
 
-            Pilih jenjang pendidikan yang sesuai sebelum melanjutkan ke jalur pendaftaran.
-
-        </p>
-
-        <div class="row g-4 justify-content-center">
-
-
-
-            <!-- S1 -->
-
-            <div class="col-lg-4">
-
-                <div class="category-card h-100">
-
-                    <div class="icon">
-
-                        🎓
-
-                    </div>
-
-                    <h3>
-
-                        Beasiswa S1
-
-                    </h3>
-
-                    <p>
-
-                        Program beasiswa untuk mahasiswa jenjang Sarjana (S1).
-
-                    </p>
-
-                    <br>
-
-                    <a href="/program" class="btn btn-main">
-
-                        Pilih Program
-
-                    </a>
-
-                </div>
+                </p>
 
             </div>
 
 
+            <div class="row g-4">
 
-            <!-- S2 -->
+                <div class="col-lg-4">
 
-            <div class="col-lg-4">
+                    <div class="category-card text-center h-100">
 
-                <div class="category-card h-100">
+                        <div class="icon">
 
-                    <div class="icon">
+                            🎓
 
-                        📖
+                        </div>
+
+                        <h3>
+
+                            Prestasi Akademik
+
+                        </h3>
+
+                        <br>
+
+                        <p>
+
+                            Untuk mahasiswa dengan prestasi akademik dan IPK yang baik.
+
+                        </p>
+
+                        <br>
+
+                        <a href="/login?program=akademik" class="btn btn-main">
+
+                            Daftar Sekarang
+
+                        </a>
 
                     </div>
-
-                    <h3>
-
-                        Beasiswa S2
-
-                    </h3>
-
-                    <p>
-
-                        Program beasiswa untuk mahasiswa jenjang Magister (S2).
-
-                    </p>
-
-                    <br>
-
-                    <a href="/program" class="btn btn-main">
-
-                        Pilih Program
-
-                    </a>
 
                 </div>
 
-            </div>
 
 
+                <div class="col-lg-4">
 
-            <!-- S3 -->
+                    <div class="category-card text-center h-100">
 
-            <div class="col-lg-4">
+                        <div class="icon">
 
-                <div class="category-card h-100">
+                            🏆
 
-                    <div class="icon">
+                        </div>
 
-                        🎖
+                        <h3>
+
+                            Prestasi Non Akademik
+
+                        </h3>
+
+                        <br>
+
+                        <p>
+
+                            Untuk mahasiswa yang aktif di organisasi, olahraga, dan perlombaan.
+
+                        </p>
+
+                        <br>
+
+                        <a href="/login?program=non-akademik" class="btn btn-main">
+
+                            Daftar Sekarang
+
+                        </a>
 
                     </div>
 
-                    <h3>
+                </div>
 
-                        Beasiswa S3
 
-                    </h3>
 
-                    <p>
+                <div class="col-lg-4">
 
-                        Program beasiswa untuk mahasiswa jenjang Doktor (S3).
+                    <div class="category-card text-center h-100">
 
-                    </p>
+                        <div class="icon">
 
-                    <br>
+                            💰
 
-                    <a href="/program" class="btn btn-main">
+                        </div>
 
-                        Pilih Program
+                        <h3>
 
-                    </a>
+                            Bantuan Ekonomi
+
+                        </h3>
+
+                        <br>
+
+                        <p>
+
+                            Untuk mahasiswa yang membutuhkan bantuan biaya pendidikan.
+
+                        </p>
+
+                        <br>
+
+                        <a href="/login?program=ekonomi" class="btn btn-main">
+
+                            Daftar Sekarang
+
+                        </a>
+
+                    </div>
 
                 </div>
 
             </div>
 
         </div>
-
-    </div>
 
     </section>
 

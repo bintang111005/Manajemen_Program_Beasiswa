@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 
 @section('content')
@@ -15,27 +14,25 @@
 
                 </span>
 
-                <h1 class="hero-title-center mt-4">
+                <h1 class="hero-title mt-4 mx-auto">
 
-                    Pilih Jalur Beasiswa
+                    Pilih Program Beasiswa
 
                 </h1>
 
                 <p class="hero-text mx-auto">
 
-                    Pilih jalur pendaftaran yang sesuai dengan prestasi yang kamu miliki.
+                    Pilih program yang sesuai dengan kebutuhanmu.
 
                 </p>
 
             </div>
 
 
-
             <div class="row g-5 justify-content-center">
 
-                <!-- AKADEMIK -->
 
-                <div class="col-lg-5">
+                <div class="col-lg-4">
 
                     <div class="category-card text-center h-100">
 
@@ -47,7 +44,7 @@
 
                         <h3>
 
-                            Jalur Akademik
+                            Prestasi Akademik
 
                         </h3>
 
@@ -55,35 +52,27 @@
 
                         <p>
 
-                            Untuk mahasiswa yang memiliki prestasi akademik.
-
-                        </p>
-
-                        <hr>
-
-                        <p>
-
-                            ✔ Input IPK
+                            IPK minimal 3.50
 
                         </p>
 
                         <p>
 
-                            ✔ Upload Transkrip Nilai
+                            Upload Transkrip Nilai
 
                         </p>
 
                         <p>
 
-                            ✔ Upload Sertifikat Akademik
+                            Sertifikat Akademik
 
                         </p>
 
                         <br>
 
-                        <a href="/login" class="btn btn-main">
+                        <a href="/login?program=akademik" class="btn btn-main">
 
-                            Pilih Jalur
+                            Pilih Program
 
                         </a>
 
@@ -93,10 +82,7 @@
 
 
 
-
-                <!-- NON AKADEMIK -->
-
-                <div class="col-lg-5">
+                <div class="col-lg-4">
 
                     <div class="category-card text-center h-100">
 
@@ -108,7 +94,7 @@
 
                         <h3>
 
-                            Jalur Non Akademik
+                            Prestasi Non Akademik
 
                         </h3>
 
@@ -116,41 +102,84 @@
 
                         <p>
 
-                            Untuk mahasiswa yang memiliki prestasi non akademik.
-
-                        </p>
-
-                        <hr>
-
-                        <p>
-
-                            ✔ Upload Portofolio
+                            Upload Portofolio
 
                         </p>
 
                         <p>
 
-                            ✔ Upload Sertifikat Prestasi
+                            Upload Sertifikat Prestasi
 
                         </p>
 
                         <p>
 
-                            ✔ Upload Sertifikat Organisasi
+                            Sertifikat Organisasi
 
                         </p>
 
                         <br>
 
-                        <a href="/login" class="btn btn-main">
+                        <a href="/login?program=non-akademik" class="btn btn-main">
 
-                            Pilih Jalur
+                            Pilih Program
 
                         </a>
 
                     </div>
 
                 </div>
+
+
+
+                <div class="col-lg-4">
+
+                    <div class="category-card text-center h-100">
+
+                        <div class="icon">
+
+                            💰
+
+                        </div>
+
+                        <h3>
+
+                            Bantuan Ekonomi
+
+                        </h3>
+
+                        <br>
+
+                        <p>
+
+                            Kartu Keluarga
+
+                        </p>
+
+                        <p>
+
+                            Surat Tidak Mampu
+
+                        </p>
+
+                        <p>
+
+                            Slip Gaji Orang Tua
+
+                        </p>
+
+                        <br>
+
+                        <a href="/login?program=ekonomi" class="btn btn-main">
+
+                            Pilih Program
+
+                        </a>
+
+                    </div>
+
+                </div>
+
 
             </div>
 

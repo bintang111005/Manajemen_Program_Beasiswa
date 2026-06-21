@@ -1,3 +1,4 @@
+
 <?php
 
 use Illuminate\Support\Facades\Route;
@@ -48,6 +49,29 @@ Route::view(
 /* ======================
 AUTH
 ====================== */
+Route::get(
+
+    '/admin-login',
+
+    function () {
+
+        return view(
+
+            'auth.admin-login'
+
+        );
+
+    }
+
+);
+
+Route::post(
+
+    '/admin-login',
+
+    [AuthController::class, 'adminLogin']
+
+);
 
 Route::get(
 
@@ -57,7 +81,6 @@ Route::get(
 
 );
 
-
 Route::post(
 
     '/register',
@@ -65,7 +88,6 @@ Route::post(
     [AuthController::class, 'store']
 
 );
-
 
 Route::get(
 
@@ -75,7 +97,6 @@ Route::get(
 
 );
 
-
 Route::post(
 
     '/login',
@@ -84,31 +105,29 @@ Route::post(
 
 );
 
-
 /* ======================
-FORM PENDAFTARAN
+UPLOAD DOKUMEN
 ====================== */
 
-Route::view(
+Route::get(
 
-    '/applications/create',
+    '/upload-document',
 
-    'applications.create'
+    function () {
 
-);
+        return view(
 
+            'applications.upload'
 
-Route::view(
+        );
 
-    '/applications/upload',
-
-    'applications.upload'
+    }
 
 );
 
 
 /* ======================
-RESOURCE
+SCHOLARSHIP
 ====================== */
 
 Route::resource(
@@ -120,6 +139,10 @@ Route::resource(
 );
 
 
+/* ======================
+APPLICATION
+====================== */
+
 Route::resource(
 
     'applications',
@@ -127,17 +150,24 @@ Route::resource(
     ScholarshipApplicationController::class
 
 );
+Route::post(
+
+    '/upload-document',
+
+    [ScholarshipApplicationController::class, 'uploadDocuments']
+
+);
 
 
 /* ======================
-DASHBOARD
+DASHBOARD MAHASISWA
 ====================== */
 
-Route::view(
+Route::get(
 
     '/student',
 
-    'student.dashboard'
+    [ScholarshipApplicationController::class, 'studentDashboard']
 
 );
 
@@ -160,20 +190,14 @@ Route::view(
 );
 
 
-Route::view(
+/* ======================
+DASHBOARD ADMIN
+====================== */
+
+Route::get(
 
     '/admin',
 
-    'admin.dashboard'
+    [ScholarshipApplicationController::class, 'adminDashboard']
 
-);
-
-Route::view(
-    '/applications/create',
-    'applications.create'
-);
-
-Route::view(
-    '/applications/upload',
-    'applications.upload'
 );

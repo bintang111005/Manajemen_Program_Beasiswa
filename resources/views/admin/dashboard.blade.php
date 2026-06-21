@@ -1,175 +1,190 @@
-@extends('layouts.app')
+@extends('layouts.admin')
+
+@section('title')
+
+    Dashboard
+
+@endsection
+
 
 @section('content')
+    <div class="mb-4">
 
-    <section class="section">
+        <h2>
 
-        <div class="container">
+            Selamat Datang, Admin 👋
 
-            <h1 class="fw-bold mb-5">
+        </h2>
 
-                Dashboard Admin
+        <p class="text-muted">
 
-            </h1>
+            Kelola program beasiswa dengan mudah dan efisien.
 
+        </p>
 
-            <div class="row g-4">
+    </div>
 
+    <div class="row g-4">
 
-                <div class="col-md-3">
 
-                    <div class="stat-card">
+        <div class="col-md-3">
 
-                        <h4>
+            <div class="card-admin">
 
-                            Total Program
+                <h6>
 
-                        </h4>
+                    Total Program
 
-                        <br>
+                </h6>
 
-                        <h2>
+                <h2 class="stat-number">
 
-                            {{ $totalProgram }}
+                    {{ $totalProgram }}
 
-                        </h2>
-
-                    </div>
-
-                </div>
-
-
-
-                <div class="col-md-3">
-
-                    <div class="stat-card">
-
-                        <h4>
-
-                            Total Pendaftar
-
-                        </h4>
-
-                        <br>
-
-                        <h2>
-
-                            {{ $totalPendaftar }}
-
-                        </h2>
-
-                    </div>
-
-                </div>
-
-
-
-                <div class="col-md-3">
-
-                    <div class="stat-card">
-
-                        <h4>
-
-                            Total Diterima
-
-                        </h4>
-
-                        <br>
-
-                        <h2>
-
-                            {{ $totalDiterima }}
-
-                        </h2>
-
-                    </div>
-
-                </div>
-
-
-
-                <div class="col-md-3">
-
-                    <div class="stat-card">
-
-                        <h4>
-
-                            Total Ditolak
-
-                        </h4>
-
-                        <br>
-
-                        <h2>
-
-                            {{ $totalDitolak }}
-
-                        </h2>
-
-                    </div>
-
-                </div>
-
-
-            </div>
-
-
-
-            <div class="category-card mt-5 p-5">
-
-
-                <h3 class="mb-4">
-
-                    Menu Cepat
-
-                </h3>
-
-
-                <div class="d-grid gap-3">
-
-
-                    <a href="/scholarships" class="btn btn-main">
-
-                        🎓 Kelola Program Beasiswa
-
-                    </a>
-
-
-                    <a href="/applications" class="btn btn-outline-dark">
-
-                        👥 Data Pendaftar
-
-                    </a>
-
-
-                    <a href="/applications" class="btn btn-outline-dark">
-
-                        📄 Verifikasi Berkas
-
-                    </a>
-
-
-                    <a href="/student/announcement" class="btn btn-outline-dark">
-
-                        📢 Pengumuman
-
-                    </a>
-
-
-                    <a href="/" class="btn btn-danger">
-
-                        🚪 Logout
-
-                    </a>
-
-
-                </div>
-
+                </h2>
 
             </div>
 
         </div>
 
-    </section>
+
+
+        <div class="col-md-3">
+
+            <div class="card-admin">
+
+                <h6>
+
+                    Total Pendaftar
+
+                </h6>
+
+                <h2 class="stat-number">
+
+                    {{ $totalPendaftar }}
+
+                </h2>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="col-md-3">
+
+            <div class="card-admin">
+
+                <h6>
+
+                    Penerima Beasiswa
+
+                </h6>
+
+                <h2 class="stat-number">
+
+                    {{ $totalDiterima }}
+
+                </h2>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="col-md-3">
+
+            <div class="card-admin">
+
+                <h6>
+
+                    Pengajuan Ditolak
+
+                </h6>
+
+                <h2 class="stat-number">
+
+                    {{ $totalDitolak }}
+
+                </h2>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="row mt-4">
+
+
+        <div class="col-lg-8">
+
+            <div class="card-admin">
+
+                <h5>
+
+                    Aktivitas Terbaru
+
+                </h5>
+
+                <hr>
+
+
+                <p>
+
+                    📄 Pendaftaran baru masuk
+
+                </p>
+
+
+                <p>
+
+                    📄 Berkas mahasiswa diverifikasi
+
+                </p>
+
+
+                <p>
+
+                    📄 Pengumuman diperbarui
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="col-lg-4">
+
+            <div class="card-admin">
+
+                <h5>
+
+                    Pengumuman
+
+                </h5>
+
+                <hr>
+
+
+                <p>
+
+                    Pendaftaran beasiswa tahun 2026 telah dibuka.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
 
 @endsection

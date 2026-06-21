@@ -7,99 +7,236 @@ use Illuminate\Http\Request;
 
 class ScholarshipController extends Controller
 {
+
     /**
-     * Display a listing of the resource.
+     * Menampilkan daftar program beasiswa
      */
+
     public function index()
     {
-        $scholarships = Scholarship::latest()->paginate(10);
 
-        return view('scholarships.index', compact('scholarships'));
+        $scholarships = Scholarship::latest()
+
+            ->get();
+
+
+        return view(
+
+            'admin.program',
+
+            compact(
+
+                'scholarships'
+
+            )
+
+        );
+
     }
 
+
     /**
-     * Show the form for creating a new resource.
+     * Menampilkan form tambah program
      */
+
     public function create()
     {
-        return view('scholarships.create');
+
+        return view(
+
+            'scholarships.create'
+
+        );
+
     }
 
+
     /**
-     * Store a newly created resource in storage.
+     * Menyimpan program baru
      */
+
     public function store(Request $request)
     {
+
         $request->validate([
+
             'name' => 'required|max:200',
+
             'provider' => 'required|max:100',
+
             'amount_monthly' => 'nullable|numeric',
+
             'requirements' => 'nullable',
+
             'start_period' => 'nullable|date',
+
             'end_period' => 'nullable|date',
+
             'deadline' => 'required|date',
+
             'quota' => 'required|integer',
+
             'description' => 'nullable',
+
             'status' => 'required'
+
         ]);
 
-        Scholarship::create($request->all());
 
-        return redirect()
-            ->route('scholarships.index')
-            ->with('success', 'Data beasiswa berhasil ditambahkan');
+        Scholarship::create(
+
+            $request->all()
+
+        );
+
+
+        return redirect(
+
+            '/admin/program'
+
+        )
+
+        ->with(
+
+            'success',
+
+            'Program berhasil ditambahkan.'
+
+        );
+
     }
 
+
     /**
-     * Display the specified resource.
+     * Menampilkan detail program
      */
+
     public function show(Scholarship $scholarship)
     {
-        return view('scholarships.show', compact('scholarship'));
+
+        return view(
+
+            'scholarships.show',
+
+            compact(
+
+                'scholarship'
+
+            )
+
+        );
+
     }
 
+
     /**
-     * Show the form for editing the specified resource.
+     * Menampilkan form edit
      */
+
     public function edit(Scholarship $scholarship)
     {
-        return view('scholarships.edit', compact('scholarship'));
+
+        return view(
+
+            'scholarships.edit',
+
+            compact(
+
+                'scholarship'
+
+            )
+
+        );
+
     }
 
+
     /**
-     * Update the specified resource in storage.
+     * Update data program
      */
-    public function update(Request $request, Scholarship $scholarship)
+
+    public function update(
+
+        Request $request,
+
+        Scholarship $scholarship
+
+    )
     {
+
         $request->validate([
+
             'name' => 'required|max:200',
+
             'provider' => 'required|max:100',
+
             'amount_monthly' => 'nullable|numeric',
+
             'requirements' => 'nullable',
+
             'start_period' => 'nullable|date',
+
             'end_period' => 'nullable|date',
+
             'deadline' => 'required|date',
+
             'quota' => 'required|integer',
+
             'description' => 'nullable',
+
             'status' => 'required'
+
         ]);
 
-        $scholarship->update($request->all());
 
-        return redirect()
-            ->route('scholarships.index')
-            ->with('success', 'Data beasiswa berhasil diperbarui');
+        $scholarship->update(
+
+            $request->all()
+
+        );
+
+
+        return redirect(
+
+            '/admin/program'
+
+        )
+
+        ->with(
+
+            'success',
+
+            'Program berhasil diperbarui.'
+
+        );
+
     }
+
 
     /**
-     * Remove the specified resource from storage.
+     * Menghapus program
      */
+
     public function destroy(Scholarship $scholarship)
     {
+
         $scholarship->delete();
 
-        return redirect()
-            ->route('scholarships.index')
-            ->with('success', 'Data beasiswa berhasil dihapus');
+
+        return redirect(
+
+            '/admin/program'
+
+        )
+
+        ->with(
+
+            'success',
+
+            'Program berhasil dihapus.'
+
+        );
+
     }
+
 }

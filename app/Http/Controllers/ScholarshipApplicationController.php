@@ -20,11 +20,16 @@ class ScholarshipApplicationController extends Controller
 
             ->paginate(10);
 
+
         return view(
 
             'applications.index',
 
-            compact('applications')
+            compact(
+
+                'applications'
+
+            )
 
         );
 
@@ -76,22 +81,11 @@ class ScholarshipApplicationController extends Controller
         ]);
 
 
-        $program = session('program');
+        $scholarshipId = session(
 
+            'program'
 
-        if ($program == 'akademik') {
-
-            $scholarshipId = 1;
-
-        } elseif ($program == 'non-akademik') {
-
-            $scholarshipId = 2;
-
-        } else {
-
-            $scholarshipId = 3;
-
-        }
+        );
 
 
         ScholarshipApplication::create([
@@ -100,7 +94,11 @@ class ScholarshipApplicationController extends Controller
 
             'user_id' => auth()->id(),
 
-            'program' => $program,
+            'program' => Scholarship::find(
+
+                $scholarshipId
+
+            )->name,
 
             'nim' => $request->nim,
 
@@ -136,123 +134,80 @@ class ScholarshipApplicationController extends Controller
     }
 
     public function uploadDocuments(Request $request)
-{
+    {
 
-    $request->validate([
+        $request->validate([
 
-        'photo' => 'required|file',
+            'photo' => 'required|file',
 
-        'ktp' => 'required|file',
+            'ktp' => 'required|file',
 
-        'ktm' => 'required|file',
+            'ktm' => 'required|file',
 
-        'document_1' => 'required|file',
+            'document_1' => 'required|file',
 
-        'document_2' => 'required|file',
+            'document_2' => 'required|file',
 
-        'document_3' => 'nullable|file'
+            'document_3' => 'nullable|file'
 
-    ]);
-
-
-    $application = ScholarshipApplication::where(
-
-        'user_id',
-
-        auth()->id()
-
-    )
-
-    ->latest()
-
-    ->first();
+        ]);
 
 
-    $photo = $request
+        $application = ScholarshipApplication::where(
 
-        ->file('photo')
+            'user_id',
 
-        ->store(
-
-            'photo',
-
-            'public'
-
-        );
-
-
-    $ktp = $request
-
-        ->file('ktp')
-
-        ->store(
-
-            'ktp',
-
-            'public'
-
-        );
-
-
-    $ktm = $request
-
-        ->file('ktm')
-
-        ->store(
-
-            'ktm',
-
-            'public'
-
-        );
-
-
-    $document1 = $request
-
-        ->file('document_1')
-
-        ->store(
-
-            'documents',
-
-            'public'
-
-        );
-
-
-    $document2 = $request
-
-        ->file('document_2')
-
-        ->store(
-
-            'documents',
-
-            'public'
-
-        );
-
-
-    $document3 = null;
-
-
-    if (
-
-        $request->hasFile(
-
-            'document_3'
+            auth()->id()
 
         )
 
-    ) {
+            ->latest()
 
-        $document3 = $request
+            ->first();
 
-            ->file(
 
-                'document_3'
+        $photo = $request
 
-            )
+            ->file('photo')
+
+            ->store(
+
+                'photo',
+
+                'public'
+
+            );
+
+
+        $ktp = $request
+
+            ->file('ktp')
+
+            ->store(
+
+                'ktp',
+
+                'public'
+
+            );
+
+
+        $ktm = $request
+
+            ->file('ktm')
+
+            ->store(
+
+                'ktm',
+
+                'public'
+
+            );
+
+
+        $document1 = $request
+
+            ->file('document_1')
 
             ->store(
 
@@ -262,41 +217,84 @@ class ScholarshipApplicationController extends Controller
 
             );
 
+
+        $document2 = $request
+
+            ->file('document_2')
+
+            ->store(
+
+                'documents',
+
+                'public'
+
+            );
+
+
+        $document3 = null;
+
+
+        if (
+
+            $request->hasFile(
+
+                'document_3'
+
+            )
+
+        ) {
+
+            $document3 = $request
+
+                ->file(
+
+                    'document_3'
+
+                )
+
+                ->store(
+
+                    'documents',
+
+                    'public'
+
+                );
+
+        }
+
+
+        $application->update([
+
+            'photo' => $photo,
+
+            'ktp' => $ktp,
+
+            'ktm' => $ktm,
+
+            'document_1' => $document1,
+
+            'document_2' => $document2,
+
+            'document_3' => $document3
+
+        ]);
+
+
+        return redirect(
+
+            '/student'
+
+        )
+
+            ->with(
+
+                'success',
+
+                'Pendaftaran berhasil dikirim.'
+
+            );
+
     }
-
-
-    $application->update([
-
-        'photo' => $photo,
-
-        'ktp' => $ktp,
-
-        'ktm' => $ktm,
-
-        'document_1' => $document1,
-
-        'document_2' => $document2,
-
-        'document_3' => $document3
-
-    ]);
-
-
-    return redirect(
-
-        '/student'
-
-    )
-
-    ->with(
-
-        'success',
-
-        'Pendaftaran berhasil dikirim.'
-
-    );
-
-}
 
 
 
@@ -382,78 +380,106 @@ class ScholarshipApplicationController extends Controller
     }
 
     public function studentDashboard()
-{
+    {
 
-    $application = ScholarshipApplication::where(
+        $application = ScholarshipApplication::where(
 
-        'user_id',
+            'user_id',
 
-        auth()->id()
-
-    )
-
-    ->latest()
-
-    ->first();
-
-
-    return view(
-
-        'student.dashboard',
-
-        compact('application')
-
-    );
-
-}
-
-
-public function adminDashboard()
-{
-
-    $totalProgram = Scholarship::count();
-
-
-    $totalPendaftar = ScholarshipApplication::count();
-
-
-    $totalDiterima = ScholarshipApplication::where(
-
-        'status',
-
-        'awarded'
-
-    )->count();
-
-
-    $totalDitolak = ScholarshipApplication::where(
-
-        'status',
-
-        'rejected'
-
-    )->count();
-
-
-    return view(
-
-        'admin.dashboard',
-
-        compact(
-
-            'totalProgram',
-
-            'totalPendaftar',
-
-            'totalDiterima',
-
-            'totalDitolak'
+            auth()->id()
 
         )
 
-    );
+            ->latest()
 
-}
+            ->first();
+
+
+        return view(
+
+            'student.dashboard',
+
+            compact('application')
+
+        );
+
+    }
+
+
+    public function adminDashboard()
+    {
+
+        $totalProgram = Scholarship::count();
+
+
+        $totalPendaftar = ScholarshipApplication::count();
+
+
+        $totalDiterima = ScholarshipApplication::where(
+
+            'status',
+
+            'awarded'
+
+        )->count();
+
+
+        $totalDitolak = ScholarshipApplication::where(
+
+            'status',
+
+            'rejected'
+
+        )->count();
+
+
+        return view(
+
+            'admin.dashboard',
+
+            compact(
+
+                'totalProgram',
+
+                'totalPendaftar',
+
+                'totalDiterima',
+
+                'totalDitolak'
+
+            )
+
+        );
+
+    }
+
+    public function applicants()
+    {
+
+        $applications = ScholarshipApplication::with(
+
+            'user'
+
+        )
+
+            ->latest()
+
+            ->get();
+
+
+        return view(
+
+            'admin.applicants',
+
+            compact(
+
+                'applications'
+
+            )
+
+        );
+
+    }
 
     /**
      * Delete resource.

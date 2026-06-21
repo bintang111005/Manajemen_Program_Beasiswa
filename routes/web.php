@@ -2,7 +2,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Models\Scholarship;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ScholarshipController;
 use App\Http\Controllers\ScholarshipApplicationController;
@@ -14,10 +14,21 @@ PUBLIC
 
 Route::get('/', function () {
 
-    return view('public.home');
+    $scholarships = Scholarship::all();
+
+    return view(
+
+        'public.home',
+
+        compact(
+
+            'scholarships'
+
+        )
+
+    );
 
 });
-
 
 Route::view(
 
@@ -199,5 +210,121 @@ Route::get(
     '/admin',
 
     [ScholarshipApplicationController::class, 'adminDashboard']
+
+);
+/* ======================
+ADMIN PROGRAM BEASISWA
+====================== */
+
+Route::get(
+
+'/admin/program',
+
+[ScholarshipController::class,'index']
+
+);
+
+
+Route::get(
+
+'/admin/program/create',
+
+[ScholarshipController::class,'create']
+
+);
+
+
+Route::post(
+
+'/admin/program',
+
+[ScholarshipController::class,'store']
+
+);
+
+
+Route::get(
+
+'/admin/program/{scholarship}/edit',
+
+[ScholarshipController::class,'edit']
+
+);
+
+
+Route::put(
+
+'/admin/program/{scholarship}',
+
+[ScholarshipController::class,'update']
+
+);
+
+
+Route::delete(
+
+'/admin/program/{scholarship}',
+
+[ScholarshipController::class,'destroy']
+
+);
+
+
+Route::get(
+
+'/admin/applicants',
+
+[ScholarshipApplicationController::class,'applicants']
+
+);
+
+
+Route::get(
+
+    '/admin/verification',
+
+    function () {
+
+        return view(
+
+            'admin.verification'
+
+        );
+
+    }
+
+);
+
+
+Route::get(
+
+    '/admin/reports',
+
+    function () {
+
+        return view(
+
+            'admin.reports'
+
+        );
+
+    }
+
+);
+
+
+Route::get(
+
+    '/admin/settings',
+
+    function () {
+
+        return view(
+
+            'admin.settings'
+
+        );
+
+    }
 
 );

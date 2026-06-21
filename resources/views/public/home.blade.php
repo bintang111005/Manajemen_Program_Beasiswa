@@ -214,123 +214,92 @@
 
             <div class="row g-4">
 
-                <div class="col-lg-4">
 
-                    <div class="category-card text-center h-100">
+                @forelse($scholarships as $scholarship)
 
-                        <div class="icon">
 
-                            🎓
+                    <div class="col-lg-4">
+
+                        <div class="category-card text-center h-100">
+
+
+                            <div class="icon">
+
+                                🎓
+
+                            </div>
+
+
+                            <h3>
+
+                                {{ $scholarship->name }}
+
+                            </h3>
+
+
+                            <br>
+
+
+                            <p>
+
+                                {{ $scholarship->description }}
+
+                            </p>
+
+
+                            <br>
+
+
+                            <div class="mb-3">
+
+                                <small class="text-muted">
+
+                                    Kuota:
+
+                                    {{ $scholarship->quota }}
+
+                                    orang
+
+                                </small>
+
+                            </div>
+
+
+                            <a href="/login?program={{ $scholarship->id }}" class="btn btn-main">
+
+                                Daftar Sekarang
+
+                            </a>
+
 
                         </div>
 
-                        <h3>
-
-                            Prestasi Akademik
-
-                        </h3>
-
-                        <br>
-
-                        <p>
-
-                            Untuk mahasiswa dengan prestasi akademik dan IPK yang baik.
-
-                        </p>
-
-                        <br>
-
-                        <a href="/login?program=akademik" class="btn btn-main">
-
-                            Daftar Sekarang
-
-                        </a>
-
                     </div>
 
-                </div>
+
+                @empty
 
 
+                    <div class="col-12">
 
-                <div class="col-lg-4">
+                        <div class="alert alert-warning text-center">
 
-                    <div class="category-card text-center h-100">
-
-                        <div class="icon">
-
-                            🏆
+                            Belum ada program beasiswa.
 
                         </div>
 
-                        <h3>
-
-                            Prestasi Non Akademik
-
-                        </h3>
-
-                        <br>
-
-                        <p>
-
-                            Untuk mahasiswa yang aktif di organisasi, olahraga, dan perlombaan.
-
-                        </p>
-
-                        <br>
-
-                        <a href="/login?program=non-akademik" class="btn btn-main">
-
-                            Daftar Sekarang
-
-                        </a>
-
                     </div>
 
-                </div>
 
+                @endforelse
 
-
-                <div class="col-lg-4">
-
-                    <div class="category-card text-center h-100">
-
-                        <div class="icon">
-
-                            💰
-
-                        </div>
-
-                        <h3>
-
-                            Bantuan Ekonomi
-
-                        </h3>
-
-                        <br>
-
-                        <p>
-
-                            Untuk mahasiswa yang membutuhkan bantuan biaya pendidikan.
-
-                        </p>
-
-                        <br>
-
-                        <a href="/login?program=ekonomi" class="btn btn-main">
-
-                            Daftar Sekarang
-
-                        </a>
-
-                    </div>
-
-                </div>
 
             </div>
 
         </div>
 
     </section>
+
 
     <!-- CARA KERJA -->
 

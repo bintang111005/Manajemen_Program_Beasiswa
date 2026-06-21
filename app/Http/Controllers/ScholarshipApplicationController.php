@@ -496,7 +496,82 @@ class ScholarshipApplicationController extends Controller
         );
 
     }
+    public function reports()
+    {
 
+        $totalProgram = Scholarship::count();
+
+
+        $totalPendaftar = ScholarshipApplication::count();
+
+
+        $totalDiterima = ScholarshipApplication::where(
+
+            'status',
+
+            'awarded'
+
+        )->count();
+
+
+        $totalDitolak = ScholarshipApplication::where(
+
+            'status',
+
+            'rejected'
+
+        )->count();
+
+
+        $persentase = 0;
+
+
+        if (
+
+            $totalPendaftar > 0
+
+        ) {
+
+            $persentase = round(
+
+                (
+
+                    $totalDiterima
+
+                    /
+
+                    $totalPendaftar
+
+                )
+
+                * 100
+
+            );
+
+        }
+
+
+        return view(
+
+            'admin.reports',
+
+            compact(
+
+                'totalProgram',
+
+                'totalPendaftar',
+
+                'totalDiterima',
+
+                'totalDitolak',
+
+                'persentase'
+
+            )
+
+        );
+
+    }
 
     public function destroy(
 

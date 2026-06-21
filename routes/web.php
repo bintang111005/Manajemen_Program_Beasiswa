@@ -291,17 +291,9 @@ LAPORAN
 
 Route::get(
 
-    '/admin/reports',
+'/admin/reports',
 
-    function () {
-
-        return view(
-
-            'admin.reports'
-
-        );
-
-    }
+[ScholarshipApplicationController::class,'reports']
 
 );
 

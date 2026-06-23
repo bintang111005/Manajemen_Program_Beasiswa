@@ -6,171 +6,171 @@
 
         <div class="container">
 
-            <h1 class="fw-bold mb-5">
-
-                Dashboard Mahasiswa
-
-            </h1>
+            <div class="category-card">
 
 
-            <div class="category-card p-5">
+                <h2 class="fw-bold mb-4">
+
+                    Dashboard Mahasiswa
+
+                </h2>
 
 
-                <!-- DATA MAHASISWA -->
-
-                <h3 class="mb-4">
-
-                    👤 Data Mahasiswa
-
-                </h3>
+                <div class="row g-4">
 
 
-                <div class="mb-3">
+                    <div class="col-md-4">
 
-                    <strong>Nama :</strong>
+                        <div class="stat-card text-center">
 
-                    {{ auth()->user()->name }}
+                            <h5>
+
+                                🎓 Program
+
+                            </h5>
+
+                            <br>
+
+                            <h4>
+
+                                {{ $application->program }}
+
+                            </h4>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <div class="stat-card text-center">
+
+                            <h5>
+
+                                📚 Jenjang
+
+                            </h5>
+
+                            <br>
+
+                            <h4>
+
+                                {{ $application->jenjang }}
+
+                            </h4>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <div class="stat-card text-center">
+
+                            <h5>
+
+                                📌 Status
+
+                            </h5>
+
+                            <br>
+
+
+                            @if($application->status == 'submitted')
+
+                                <span class="badge bg-warning">
+
+                                    Menunggu Review
+
+                                </span>
+
+
+                            @elseif($application->status == 'awarded')
+
+                                <span class="badge bg-success">
+
+                                    Diterima
+
+                                </span>
+
+
+                            @elseif($application->status == 'rejected')
+
+                                <span class="badge bg-danger">
+
+                                    Ditolak
+
+                                </span>
+
+
+                            @endif
+
+
+                        </div>
+
+                    </div>
+
 
                 </div>
 
 
-                <div class="mb-3">
+                <div class="row mt-5">
 
-                    <strong>NIM :</strong>
 
-                    {{ $application->nim }}
+                    <div class="col-md-6 mb-3">
+
+
+                        <a href="/student/status" class="btn btn-outline-primary w-100">
+
+                            📄 Status Seleksi
+
+                        </a>
+
+
+                    </div>
+
+
+                    <div class="col-md-6 mb-3">
+
+
+                        <a href="/student/announcement" class="btn btn-success w-100">
+
+                            📢 Lihat Pengumuman
+
+                        </a>
+
+
+                    </div>
+
 
                 </div>
 
 
-                <div class="mb-3">
+                <div class="mt-4">
 
-                    <strong>Program Studi :</strong>
 
-                    {{ $application->major }}
+                    <form action="/logout" method="POST">
+
+
+                        @csrf
+
+
+                        <button class="btn btn-danger">
+
+                            🚪 Logout
+
+                        </button>
+
+
+                    </form>
+
 
                 </div>
-
-
-                <div class="mb-3">
-
-                    <strong>Jenjang :</strong>
-
-                    {{ $application->jenjang }}
-
-                </div>
-
-
-                <div class="mb-5">
-
-                    <strong>Semester :</strong>
-
-                    {{ $application->semester }}
-
-                </div>
-
-
-
-                <hr class="my-5">
-
-
-
-                <!-- INFORMASI BEASISWA -->
-
-                <h3 class="mb-4">
-
-                    🎓 Informasi Beasiswa
-
-                </h3>
-
-
-                <div class="mb-3">
-
-                    <strong>Program :</strong>
-
-                    {{ ucfirst($application->program) }}
-
-                </div>
-
-
-                <div class="mb-3">
-
-                    <strong>Status :</strong>
-
-                    <span class="badge bg-warning">
-
-                        {{ ucfirst($application->status) }}
-
-                    </span>
-
-                </div>
-
-
-                <div class="mb-5">
-
-                    <strong>Tanggal Daftar :</strong>
-
-                    {{ $application->created_at->format('d M Y') }}
-
-                </div>
-
-
-
-                <hr class="my-5">
-
-
-
-                <!-- STATUS BERKAS -->
-
-                <h3 class="mb-4">
-
-                    📄 Status Berkas
-
-                </h3>
-
-
-                <p>
-
-                    ✅ Foto Diri
-
-                </p>
-
-
-                <p>
-
-                    ✅ KTP
-
-                </p>
-
-
-                <p>
-
-                    ✅ KTM
-
-                </p>
-
-
-                <p>
-
-                    ✅ Dokumen Pendukung
-
-                </p>
 
 
             </div>
-
-
-
-            <div class="mt-5">
-
-                <a href="/student/status" class="btn btn-main">
-
-                    Lihat Status Seleksi
-
-                </a>
-
-            </div>
-
 
         </div>
 

@@ -22,9 +22,13 @@
 
                     </p>
 
+
                     <form action="/applications" method="POST">
 
                         @csrf
+
+
+                        <!-- PROGRAM BEASISWA -->
 
                         <div class="mb-4">
 
@@ -34,21 +38,63 @@
 
                             </label>
 
-                            <input type="text" class="form-control" value="{{
 
-        session('program') == 'akademik'
+                            @if(session('program'))
 
-        ? 'Prestasi Akademik'
 
-        : (session('program') == 'non-akademik'
+                                @php
 
-            ? 'Prestasi Non Akademik'
+                                    $scholarship = \App\Models\Scholarship::find(
 
-            : 'Bantuan Ekonomi')
+                                        session('program')
 
-    }}" readonly>
+                                    );
+
+                                @endphp
+
+
+                                <input type="text" class="form-control" value="{{ $scholarship->name }}" readonly>
+
+
+                                <input type="hidden" name="program" value="{{ $scholarship->id }}">
+
+
+                            @else
+
+
+                                <select name="program" class="form-select" required>
+
+
+                                    <option value="">
+
+                                        Pilih Program Beasiswa
+
+                                    </option>
+
+
+                                    @foreach(\App\Models\Scholarship::where('status', 'open')->get() as $scholarship)
+
+
+                                        <option value="{{ $scholarship->id }}">
+
+                                            {{ $scholarship->name }}
+
+                                        </option>
+
+
+                                    @endforeach
+
+
+                                </select>
+
+
+                            @endif
+
 
                         </div>
+
+
+                        <!-- NAMA -->
 
                         <div class="mb-4">
 
@@ -58,9 +104,14 @@
 
                             </label>
 
+
                             <input type="text" class="form-control" value="{{ auth()->user()->name }}" readonly>
 
+
                         </div>
+
+
+                        <!-- NIM -->
 
                         <div class="mb-4">
 
@@ -70,9 +121,14 @@
 
                             </label>
 
+
                             <input type="text" name="nim" class="form-control" required>
 
+
                         </div>
+
+
+                        <!-- PRODI -->
 
                         <div class="mb-4">
 
@@ -82,9 +138,14 @@
 
                             </label>
 
+
                             <input type="text" name="major" class="form-control" required>
 
+
                         </div>
+
+
+                        <!-- JENJANG -->
 
                         <div class="mb-4">
 
@@ -94,7 +155,9 @@
 
                             </label>
 
+
                             <select name="jenjang" class="form-select" required>
+
 
                                 <option value="">
 
@@ -102,11 +165,13 @@
 
                                 </option>
 
+
                                 <option value="D3">
 
                                     D3
 
                                 </option>
+
 
                                 <option value="D4">
 
@@ -114,11 +179,13 @@
 
                                 </option>
 
+
                                 <option value="S1">
 
                                     S1
 
                                 </option>
+
 
                                 <option value="S2">
 
@@ -126,9 +193,14 @@
 
                                 </option>
 
+
                             </select>
 
+
                         </div>
+
+
+                        <!-- SEMESTER -->
 
                         <div class="mb-4">
 
@@ -138,9 +210,14 @@
 
                             </label>
 
+
                             <input type="number" name="semester" class="form-control" required>
 
+
                         </div>
+
+
+                        <!-- IPK -->
 
                         <div class="mb-4">
 
@@ -150,9 +227,14 @@
 
                             </label>
 
+
                             <input type="number" step="0.01" min="0" max="4" name="gpa" class="form-control" required>
 
+
                         </div>
+
+
+                        <!-- NO HP -->
 
                         <div class="mb-4">
 
@@ -162,9 +244,14 @@
 
                             </label>
 
+
                             <input type="text" name="phone" class="form-control" required>
 
+
                         </div>
+
+
+                        <!-- ALAMAT -->
 
                         <div class="mb-4">
 
@@ -174,11 +261,14 @@
 
                             </label>
 
-                            <textarea name="address" rows="3" class="form-control" required>
 
-    </textarea>
+                            <textarea name="address" rows="3" class="form-control" required></textarea>
+
 
                         </div>
+
+
+                        <!-- MOTIVASI -->
 
                         <div class="mb-5">
 
@@ -188,11 +278,12 @@
 
                             </label>
 
-                            <textarea name="motivation_letter" rows="5" class="form-control" required>
 
-    </textarea>
+                            <textarea name="motivation_letter" rows="5" class="form-control" required></textarea>
+
 
                         </div>
+
 
                         <button type="submit" class="btn btn-main w-100">
 
@@ -200,7 +291,9 @@
 
                         </button>
 
+
                     </form>
+
 
                 </div>
 

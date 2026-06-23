@@ -57,11 +57,28 @@ class ScholarshipApplicationController extends Controller
         ]);
 
 
-        $scholarshipId = session(
+        $scholarshipId =
 
-            'program'
+            session('program')
 
-        );
+            ??
+
+            $request->program;
+
+
+        if (!$scholarshipId) {
+
+            return back()
+
+                ->with(
+
+                    'error',
+
+                    'Silakan pilih program beasiswa terlebih dahulu.'
+
+                );
+
+        }
 
 
         $scholarship = Scholarship::find(
@@ -69,6 +86,21 @@ class ScholarshipApplicationController extends Controller
             $scholarshipId
 
         );
+
+
+        if (!$scholarship) {
+
+            return back()
+
+                ->with(
+
+                    'error',
+
+                    'Program beasiswa tidak ditemukan.'
+
+                );
+
+        }
 
 
         ScholarshipApplication::create([
@@ -102,6 +134,13 @@ class ScholarshipApplicationController extends Controller
             'status' => 'submitted'
 
         ]);
+
+
+        session()->forget(
+
+            'program'
+
+        );
 
 
         return redirect(
@@ -144,6 +183,17 @@ class ScholarshipApplicationController extends Controller
             ->latest()
 
             ->first();
+
+
+        if (!$application) {
+
+            return redirect(
+
+                '/student'
+
+            );
+
+        }
 
 
         $photo = $request
@@ -282,6 +332,13 @@ class ScholarshipApplicationController extends Controller
         ScholarshipApplication $application
 
     ) {
+
+        $application->load(
+
+            'user'
+
+        );
+
 
         return view(
 
@@ -496,6 +553,8 @@ class ScholarshipApplicationController extends Controller
         );
 
     }
+
+
     public function reports()
     {
 
@@ -572,6 +631,36 @@ class ScholarshipApplicationController extends Controller
         );
 
     }
+    public function status()
+{
+
+    $application = ScholarshipApplication::where(
+
+        'user_id',
+
+        auth()->id()
+
+    )
+
+    ->latest()
+
+    ->first();
+
+
+    return view(
+
+        'student.status',
+
+        compact(
+
+            'application'
+
+        )
+
+    );
+
+}
+
 
     public function destroy(
 

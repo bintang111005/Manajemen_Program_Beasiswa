@@ -119,6 +119,50 @@ class AuthController extends Controller
                 ->regenerate();
 
 
+            $application = \App\Models\ScholarshipApplication::where(
+
+                'user_id',
+
+                auth()->id()
+
+            )
+
+                ->latest()
+
+                ->first();
+
+
+            $application = \App\Models\ScholarshipApplication::where(
+
+                'user_id',
+
+                auth()->id()
+
+            )
+
+                ->latest()
+
+                ->first();
+
+
+            if ($application) {
+
+                return redirect(
+
+                    '/student'
+
+                );
+
+            }
+
+
+            return redirect(
+
+                '/applications/create'
+
+            );
+
+
             return redirect(
 
                 '/applications/create'
@@ -134,7 +178,7 @@ class AuthController extends Controller
 
                 'email' =>
 
-                'Email atau password salah.'
+                    'Email atau password salah.'
 
             ])
 
@@ -164,63 +208,63 @@ class AuthController extends Controller
 
     }
     public function adminLogin(Request $request)
-{
+    {
 
-    $request->validate([
+        $request->validate([
 
-        'username' => 'required',
+            'username' => 'required',
 
-        'password' => 'required'
-
-    ]);
-
-
-    if (
-
-        $request->username == 'admin'
-
-        &&
-
-        $request->password == '123'
-
-    ) {
-
-        session([
-
-            'admin' => true
+            'password' => 'required'
 
         ]);
 
 
-        return redirect(
+        if (
 
-            '/admin'
+            $request->username == 'admin'
+
+            &&
+
+            $request->password == '123'
+
+        ) {
+
+            session([
+
+                'admin' => true
+
+            ]);
+
+
+            return redirect(
+
+                '/admin'
+
+            );
+
+        }
+
+
+        return back()
+
+            ->withErrors([
+
+                'username' =>
+
+                    'Username atau password salah.'
+
+            ]);
+
+    }
+    public function settings()
+    {
+
+        return view(
+
+            'admin.settings'
 
         );
 
     }
-
-
-    return back()
-
-    ->withErrors([
-
-        'username' =>
-
-        'Username atau password salah.'
-
-    ]);
-
-}
-public function settings()
-{
-
-    return view(
-
-        'admin.settings'
-
-    );
-
-}
 
 }

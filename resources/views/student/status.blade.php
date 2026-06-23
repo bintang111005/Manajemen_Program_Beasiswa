@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 
 @section('content')
@@ -7,51 +6,227 @@
 
         <div class="container">
 
-            <h1 class="fw-bold mb-5">
+            <div class="col-lg-8 mx-auto">
 
-                Status Seleksi
+                <div class="category-card">
 
-            </h1>
+                    <h2 class="fw-bold mb-5 text-center">
 
-            <div class="category-card">
+                        Status Tahap Seleksi
 
-                <h3>
+                    </h2>
 
-                    Tahapan Seleksi
 
-                </h3>
+                    <div class="timeline">
 
-                <br>
 
-                <p>
+                        <!-- FORMULIR -->
 
-                    ✅ Registrasi
+                        <div class="d-flex align-items-center mb-4">
 
-                </p>
+                            <div class="me-3 fs-3">
 
-                <p>
+                                ✅
 
-                    ✅ Upload Dokumen
+                            </div>
 
-                </p>
+                            <div>
 
-                <p>
+                                <h5>
 
-                    🟡 Verifikasi Dokumen
+                                    Pengisian Formulir
 
-                </p>
+                                </h5>
 
-                <p>
+                                <small>
 
-                    ⬜ Wawancara
+                                    Selesai
 
-                </p>
+                                </small>
 
-                <p>
+                            </div>
 
-                    ⬜ Pengumuman
+                        </div>
 
-                </p>
+
+                        <!-- DOKUMEN -->
+
+                        <div class="d-flex align-items-center mb-4">
+
+                            <div class="me-3 fs-3">
+
+                                ✅
+
+                            </div>
+
+                            <div>
+
+                                <h5>
+
+                                    Upload Dokumen
+
+                                </h5>
+
+                                <small>
+
+                                    Selesai
+
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- VERIFIKASI -->
+
+                        <div class="d-flex align-items-center mb-4">
+
+
+                            @if(
+
+                                    $application->status == 'submitted'
+
+                                )
+
+                                <div class="me-3 fs-3">
+
+                                    ⏳
+
+                                </div>
+
+                                <div>
+
+                                    <h5>
+
+                                        Verifikasi Admin
+
+                                    </h5>
+
+                                    <small>
+
+                                        Sedang Diproses
+
+                                    </small>
+
+                                </div>
+
+
+                            @else
+
+
+                                <div class="me-3 fs-3">
+
+                                    ✅
+
+                                </div>
+
+                                <div>
+
+                                    <h5>
+
+                                        Verifikasi Admin
+
+                                    </h5>
+
+                                    <small>
+
+                                        Selesai
+
+                                    </small>
+
+                                </div>
+
+
+                            @endif
+
+
+                        </div>
+
+
+                        <!-- PENGUMUMAN -->
+
+                        <div class="d-flex align-items-center mb-4">
+
+
+                            @if(
+
+                                    $application->status == 'submitted'
+
+                                )
+
+                                <div class="me-3 fs-3">
+
+                                    ⬜
+
+                                </div>
+
+                                <div>
+
+                                    <h5>
+
+                                        Pengumuman
+
+                                    </h5>
+
+                                    <small>
+
+                                        Menunggu Hasil
+
+                                    </small>
+
+                                </div>
+
+
+                            @else
+
+
+                                <div class="me-3 fs-3">
+
+                                    ✅
+
+                                </div>
+
+                                <div>
+
+                                    <h5>
+
+                                        Pengumuman
+
+                                    </h5>
+
+                                    <small>
+
+                                        Selesai
+
+                                    </small>
+
+                                </div>
+
+
+                            @endif
+
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="mt-5 text-center">
+
+
+                        <a href="/student" class="btn btn-main">
+
+                            Kembali ke Dashboard
+
+                        </a>
+
+
+                    </div>
+
+
+                </div>
 
             </div>
 

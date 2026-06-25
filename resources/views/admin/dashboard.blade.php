@@ -1,190 +1,594 @@
 @extends('layouts.admin')
 
-@section('title')
-
-    Dashboard
-
-@endsection
-
+@section('title','Dashboard')
 
 @section('content')
-    <div class="mb-4">
 
-        <h2>
+<div class="row mb-4">
 
-            Selamat Datang, Admin 👋
+    <div class="col-lg-8">
+
+        <h2 class="fw-bold">
+
+            Selamat Datang 👋
 
         </h2>
 
-        <p class="text-muted">
+        <p class="text-secondary">
 
-            Kelola program beasiswa dengan mudah dan efisien.
+            Kelola seluruh program beasiswa, pantau perkembangan pendaftar,
+            dan lakukan proses seleksi mahasiswa melalui dashboard ini.
 
         </p>
 
     </div>
 
-    <div class="row g-4">
+    <div class="col-lg-4 text-lg-end">
 
+        <a href="/admin/program"
 
-        <div class="col-md-3">
+           class="btn btn-primary rounded-pill px-4 py-2">
 
-            <div class="card-admin">
+            <i class="bi bi-plus-circle me-2"></i>
 
-                <h6>
+            Tambah Program
 
-                    Total Program
-
-                </h6>
-
-                <h2 class="stat-number">
-
-                    {{ $totalProgram }}
-
-                </h2>
-
-            </div>
-
-        </div>
-
-
-
-        <div class="col-md-3">
-
-            <div class="card-admin">
-
-                <h6>
-
-                    Total Pendaftar
-
-                </h6>
-
-                <h2 class="stat-number">
-
-                    {{ $totalPendaftar }}
-
-                </h2>
-
-            </div>
-
-        </div>
-
-
-
-        <div class="col-md-3">
-
-            <div class="card-admin">
-
-                <h6>
-
-                    Penerima Beasiswa
-
-                </h6>
-
-                <h2 class="stat-number">
-
-                    {{ $totalDiterima }}
-
-                </h2>
-
-            </div>
-
-        </div>
-
-
-
-        <div class="col-md-3">
-
-            <div class="card-admin">
-
-                <h6>
-
-                    Pengajuan Ditolak
-
-                </h6>
-
-                <h2 class="stat-number">
-
-                    {{ $totalDitolak }}
-
-                </h2>
-
-            </div>
-
-        </div>
-
+        </a>
 
     </div>
 
+</div>
 
+<div class="row g-4">
 
-    <div class="row mt-4">
+    <div class="col-xl-3 col-md-6">
 
+        <div class="card-custom p-4 h-100">
 
-        <div class="col-lg-8">
+            <div class="d-flex justify-content-between">
 
-            <div class="card-admin">
+                <div>
 
-                <h5>
+                    <small class="text-secondary">
+
+                        Total Program
+
+                    </small>
+
+                    <h2 class="fw-bold mt-3">
+
+                        {{ $totalProgram }}
+
+                    </h2>
+
+                    <span class="text-success">
+
+                        Semua Program Aktif
+
+                    </span>
+
+                </div>
+
+                <div>
+
+                    <div style="width:65px;height:65px;border-radius:18px;background:#eef5ff;display:flex;align-items:center;justify-content:center;">
+
+                        <i class="bi bi-mortarboard-fill fs-2 text-primary"></i>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-xl-3 col-md-6">
+
+        <div class="card-custom p-4 h-100">
+
+            <div class="d-flex justify-content-between">
+
+                <div>
+
+                    <small class="text-secondary">
+
+                        Total Pendaftar
+
+                    </small>
+
+                    <h2 class="fw-bold mt-3">
+
+                        {{ $totalPendaftar }}
+
+                    </h2>
+
+                    <span class="text-primary">
+
+                        Mahasiswa Terdaftar
+
+                    </span>
+
+                </div>
+
+                <div>
+
+                    <div style="width:65px;height:65px;border-radius:18px;background:#eefcf7;display:flex;align-items:center;justify-content:center;">
+
+                        <i class="bi bi-people-fill fs-2 text-success"></i>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-xl-3 col-md-6">
+
+        <div class="card-custom p-4 h-100">
+
+            <div class="d-flex justify-content-between">
+
+                <div>
+
+                    <small class="text-secondary">
+
+                        Diterima
+
+                    </small>
+
+                    <h2 class="fw-bold mt-3 text-success">
+
+                        {{ $totalDiterima }}
+
+                    </h2>
+
+                    <span class="text-success">
+
+                        Lolos Seleksi
+
+                    </span>
+
+                </div>
+
+                <div>
+
+                    <div style="width:65px;height:65px;border-radius:18px;background:#ecfdf3;display:flex;align-items:center;justify-content:center;">
+
+                        <i class="bi bi-patch-check-fill fs-2 text-success"></i>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-xl-3 col-md-6">
+
+        <div class="card-custom p-4 h-100">
+
+            <div class="d-flex justify-content-between">
+
+                <div>
+
+                    <small class="text-secondary">
+
+                        Ditolak
+
+                    </small>
+
+                    <h2 class="fw-bold mt-3 text-danger">
+
+                        {{ $totalDitolak }}
+
+                    </h2>
+
+                    <span class="text-danger">
+
+                        Tidak Lolos
+
+                    </span>
+
+                </div>
+
+                <div>
+
+                    <div style="width:65px;height:65px;border-radius:18px;background:#fff1f2;display:flex;align-items:center;justify-content:center;">
+
+                        <i class="bi bi-x-circle-fill fs-2 text-danger"></i>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="row mt-4">
+
+    <div class="col-lg-8">
+
+        <div class="card-custom p-4">
+
+            <div class="d-flex justify-content-between align-items-center mb-4">
+
+                <h5 class="fw-bold mb-0">
+
+                    Statistik Pendaftaran
+
+                </h5>
+
+                <span class="badge bg-primary">
+
+                    Tahun 2026
+
+                </span>
+
+            </div>
+
+            <div class="progress mb-4" style="height:14px;border-radius:20px;">
+
+                <div class="progress-bar bg-primary"
+
+                     style="width:70%">
+
+                </div>
+
+            </div>
+
+            <div class="row text-center">
+
+                <div class="col">
+
+                    <h4 class="fw-bold">
+
+                        {{ $totalProgram }}
+
+                    </h4>
+
+                    <small class="text-secondary">
+
+                        Program
+
+                    </small>
+
+                </div>
+
+                <div class="col">
+
+                    <h4 class="fw-bold">
+
+                        {{ $totalPendaftar }}
+
+                    </h4>
+
+                    <small class="text-secondary">
+
+                        Pendaftar
+
+                    </small>
+
+                </div>
+
+                <div class="col">
+
+                    <h4 class="fw-bold text-success">
+
+                        {{ $totalDiterima }}
+
+                    </h4>
+
+                    <small class="text-secondary">
+
+                        Diterima
+
+                    </small>
+
+                </div>
+
+                <div class="col">
+
+                    <h4 class="fw-bold text-danger">
+
+                        {{ $totalDitolak }}
+
+                    </h4>
+
+                    <small class="text-secondary">
+
+                        Ditolak
+
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>    <div class="col-lg-4">
+
+        <div class="card-custom p-4 h-100">
+
+            <div class="d-flex justify-content-between align-items-center mb-4">
+
+                <h5 class="fw-bold mb-0">
+
+                    Quick Action
+
+                </h5>
+
+                <i class="bi bi-lightning-charge-fill text-warning fs-4"></i>
+
+            </div>
+
+            <div class="d-grid gap-3">
+
+                <a href="/admin/program"
+
+                   class="btn btn-outline-primary rounded-4 py-3">
+
+                    <i class="bi bi-book-half me-2"></i>
+
+                    Kelola Program
+
+                </a>
+
+                <a href="/admin/applicants"
+
+                   class="btn btn-outline-success rounded-4 py-3">
+
+                    <i class="bi bi-people-fill me-2"></i>
+
+                    Data Pendaftar
+
+                </a>
+
+                <a href="/admin/verification"
+
+                   class="btn btn-outline-warning rounded-4 py-3">
+
+                    <i class="bi bi-patch-check-fill me-2"></i>
+
+                    Verifikasi Berkas
+
+                </a>
+
+                <a href="/admin/reports"
+
+                   class="btn btn-outline-dark rounded-4 py-3">
+
+                    <i class="bi bi-bar-chart-fill me-2"></i>
+
+                    Lihat Laporan
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="row mt-4">
+
+    <div class="col-lg-7">
+
+        <div class="card-custom p-4">
+
+            <div class="d-flex justify-content-between align-items-center mb-4">
+
+                <h5 class="fw-bold mb-0">
 
                     Aktivitas Terbaru
 
                 </h5>
 
-                <hr>
+                <span class="badge bg-success">
 
+                    Live
 
-                <p>
+                </span>
 
-                    📄 Pendaftaran baru masuk
+            </div>
 
-                </p>
+            <div class="d-flex mb-4">
 
+                <div class="me-3">
 
-                <p>
+                    <div class="rounded-circle bg-primary"
 
-                    📄 Berkas mahasiswa diverifikasi
+                         style="width:12px;height:12px;margin-top:8px;"></div>
 
-                </p>
+                </div>
 
+                <div>
 
-                <p>
+                    <h6 class="fw-bold mb-1">
 
-                    📄 Pengumuman diperbarui
+                        Pendaftaran Baru
 
-                </p>
+                    </h6>
+
+                    <small class="text-secondary">
+
+                        Mahasiswa baru telah mengirim formulir pendaftaran.
+
+                    </small>
+
+                </div>
+
+            </div>
+
+            <div class="d-flex mb-4">
+
+                <div class="me-3">
+
+                    <div class="rounded-circle bg-success"
+
+                         style="width:12px;height:12px;margin-top:8px;"></div>
+
+                </div>
+
+                <div>
+
+                    <h6 class="fw-bold mb-1">
+
+                        Berkas Diverifikasi
+
+                    </h6>
+
+                    <small class="text-secondary">
+
+                        Admin telah menyelesaikan proses pemeriksaan dokumen.
+
+                    </small>
+
+                </div>
+
+            </div>
+
+            <div class="d-flex">
+
+                <div class="me-3">
+
+                    <div class="rounded-circle bg-warning"
+
+                         style="width:12px;height:12px;margin-top:8px;"></div>
+
+                </div>
+
+                <div>
+
+                    <h6 class="fw-bold mb-1">
+
+                        Pengumuman Seleksi
+
+                    </h6>
+
+                    <small class="text-secondary">
+
+                        Status penerima beasiswa telah diperbarui.
+
+                    </small>
+
+                </div>
 
             </div>
 
         </div>
-
-
-
-        <div class="col-lg-4">
-
-            <div class="card-admin">
-
-                <h5>
-
-                    Pengumuman
-
-                </h5>
-
-                <hr>
-
-
-                <p>
-
-                    Pendaftaran beasiswa tahun 2026 telah dibuka.
-
-                </p>
-
-            </div>
-
-        </div>
-
 
     </div>
 
+    <div class="col-lg-5">
+
+        <div class="card-custom p-4 h-100">
+
+            <div class="d-flex justify-content-between mb-4">
+
+                <h5 class="fw-bold mb-0">
+
+                    Ringkasan Sistem
+
+                </h5>
+
+                <i class="bi bi-pie-chart-fill text-primary"></i>
+
+            </div>
+
+            <div class="mb-4">
+
+                <small class="text-secondary">
+
+                    Program Beasiswa
+
+                </small>
+
+                <div class="progress mt-2" style="height:10px;">
+
+                    <div class="progress-bar bg-primary"
+
+                         style="width:100%"></div>
+
+                </div>
+
+            </div>
+
+            <div class="mb-4">
+
+                <small class="text-secondary">
+
+                    Pendaftaran
+
+                </small>
+
+                <div class="progress mt-2" style="height:10px;">
+
+                    <div class="progress-bar bg-success"
+
+                         style="width:85%"></div>
+
+                </div>
+
+            </div>
+
+            <div class="mb-4">
+
+                <small class="text-secondary">
+
+                    Verifikasi
+
+                </small>
+
+                <div class="progress mt-2" style="height:10px;">
+
+                    <div class="progress-bar bg-warning"
+
+                         style="width:75%"></div>
+
+                </div>
+
+            </div>
+
+            <div>
+
+                <small class="text-secondary">
+
+                    Pengumuman
+
+                </small>
+
+                <div class="progress mt-2" style="height:10px;">
+
+                    <div class="progress-bar bg-danger"
+
+                         style="width:60%"></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
 
 @endsection

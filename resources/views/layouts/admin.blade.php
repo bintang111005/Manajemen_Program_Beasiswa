@@ -1,426 +1,706 @@
 <!DOCTYPE html>
-
 <html lang="id">
 
 <head>
 
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-    <title>Admin Panel - ScholarHub</title>
+    <title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        @yield('title') | ScholarHub Admin
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    </title>
 
+    <!-- Bootstrap -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <!-- Bootstrap Icon -->
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Google Font -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
 
     <style>
-        :root {
 
-            --sidebar: #002B2B;
+        *{
 
-            --primary: #008080;
+            margin:0;
 
-            --secondary: #2BC4C4;
+            padding:0;
 
-            --background: #F6F8FA;
+            box-sizing:border-box;
 
-            --white: #FFFFFF;
-
-        }
-
-
-        * {
-
-            margin: 0;
-
-            padding: 0;
-
-            box-sizing: border-box;
+            font-family:'Inter',sans-serif;
 
         }
 
+        body{
 
-        body {
+            background:#f7f8fc;
 
-            background: var(--background);
+            color:#1f2937;
 
-            font-family: 'Segoe UI', sans-serif;
-
-            overflow-x: hidden;
-
-        }
-
-
-        /* =======================
-SIDEBAR
-======================= */
-
-        .sidebar {
-
-            position: fixed;
-
-            top: 0;
-
-            left: 0;
-
-            width: 270px;
-
-            height: 100vh;
-
-            background: var(--sidebar);
-
-            padding: 30px 20px;
-
-            z-index: 1000;
+            overflow-x:hidden;
 
         }
 
+        a{
 
-        .logo {
-
-            font-size: 36px;
-
-            font-weight: 800;
-
-            color: white;
-
-            text-decoration: none;
+            text-decoration:none;
 
         }
 
+        /* ===========================
+                    SIDEBAR
+        =========================== */
 
-        .logo:hover {
+        .sidebar{
 
-            color: white;
+            position:fixed;
 
-        }
+            top:0;
 
+            left:0;
 
-        .menu {
+            width:280px;
 
-            margin-top: 50px;
+            height:100vh;
 
-        }
+            background:#ffffff;
 
+            border-right:1px solid #ececec;
 
-        .menu a {
+            padding:30px;
 
-            display: flex;
+            display:flex;
 
-            align-items: center;
+            flex-direction:column;
 
-            gap: 12px;
-
-            padding: 15px 18px;
-
-            margin-bottom: 12px;
-
-            border-radius: 14px;
-
-            text-decoration: none;
-
-            font-size: 17px;
-
-            font-weight: 500;
-
-            color: #ffffff;
-
-            transition: .35s ease;
+            z-index:999;
 
         }
 
+        .logo{
 
-        .menu a:hover {
+            display:flex;
 
-            background: var(--primary);
+            align-items:center;
 
-            transform: translateX(8px);
+            gap:15px;
 
-        }
-
-
-        .menu a.active {
-
-            background: var(--primary);
-
-            box-shadow:
-
-                0 8px 20px rgba(0, 128, 128, .35);
+            margin-bottom:45px;
 
         }
 
+        .logo-icon{
 
-        /* =======================
-CONTENT
-======================= */
+            width:55px;
 
-        .content {
+            height:55px;
 
-            margin-left: 270px;
+            border-radius:18px;
 
-            padding: 40px;
+            background:linear-gradient(135deg,#2563eb,#3b82f6);
 
-            animation: fadeIn .6s ease;
+            color:white;
 
-        }
+            display:flex;
 
+            justify-content:center;
 
-        .topbar {
+            align-items:center;
 
-            display: flex;
+            font-size:24px;
 
-            justify-content: space-between;
-
-            align-items: center;
-
-            margin-bottom: 40px;
+            box-shadow:0 12px 30px rgba(37,99,235,.25);
 
         }
 
+        .logo h4{
 
-        .admin-profile {
+            margin:0;
 
-            display: flex;
-
-            align-items: center;
-
-            gap: 10px;
-
-            font-size: 18px;
-
-            font-weight: 600;
+            font-weight:700;
 
         }
 
+        .logo small{
 
-        .card-admin {
-
-            background: white;
-
-            border-radius: 24px;
-
-            padding: 32px;
-
-            box-shadow:
-
-                0 8px 24px rgba(0, 0, 0, .05);
-
-            height: 100%;
-
-            transition: .3s ease;
+            color:#9ca3af;
 
         }
 
+        .menu-title{
 
-        .card-admin:hover {
+            color:#9ca3af;
 
-            transform: translateY(-6px);
+            font-size:12px;
 
-        }
+            text-transform:uppercase;
 
+            letter-spacing:1px;
 
-        .stat-number {
-
-            font-size: 42px;
-
-            font-weight: 800;
-
-            color: var(--primary);
+            margin-bottom:15px;
 
         }
 
+        .sidebar .nav-link{
 
-        .text-muted {
+            display:flex;
 
-            font-size: 15px;
+            align-items:center;
+
+            gap:14px;
+
+            padding:14px 18px;
+
+            border-radius:16px;
+
+            color:#4b5563;
+
+            font-weight:500;
+
+            margin-bottom:8px;
+
+            transition:.25s;
 
         }
 
+        .sidebar .nav-link:hover{
 
-        /* =======================
-ANIMATION
-======================= */
+            background:#eff6ff;
 
-        @keyframes fadeIn {
+            color:#2563eb;
 
-            from {
+            transform:translateX(4px);
 
-                opacity: 0;
+        }
 
-                transform: translateY(15px);
+        .sidebar .nav-link.active{
+
+            background:linear-gradient(135deg,#2563eb,#3b82f6);
+
+            color:white;
+
+            box-shadow:0 15px 35px rgba(37,99,235,.25);
+
+        }
+
+        .sidebar .nav-link i{
+
+            font-size:19px;
+
+        }
+
+        .sidebar-footer{
+
+            margin-top:auto;
+
+        }
+
+        .logout-btn{
+
+            width:100%;
+
+            border-radius:14px;
+
+        }
+
+        /* ===========================
+                CONTENT
+        =========================== */
+
+        .content{
+
+            margin-left:280px;
+
+            min-height:100vh;
+
+            display:flex;
+
+            flex-direction:column;
+
+        }
+
+        /* ===========================
+                TOPBAR
+        =========================== */
+
+        .topbar{
+
+            background:#ffffff;
+
+            height:82px;
+
+            display:flex;
+
+            justify-content:space-between;
+
+            align-items:center;
+
+            padding:0 35px;
+
+            border-bottom:1px solid #ececec;
+
+            position:sticky;
+
+            top:0;
+
+            z-index:99;
+
+        }
+
+        .topbar-left h4{
+
+            font-weight:700;
+
+            margin-bottom:2px;
+
+        }
+
+        .topbar-left small{
+
+            color:#9ca3af;
+
+        }
+
+        .topbar-right{
+
+            display:flex;
+
+            align-items:center;
+
+            gap:20px;
+
+        }
+
+        .icon-btn{
+
+            width:46px;
+
+            height:46px;
+
+            border:none;
+
+            border-radius:50%;
+
+            background:#f4f6fb;
+
+            transition:.25s;
+
+        }
+
+        .icon-btn:hover{
+
+            background:#2563eb;
+
+            color:white;
+
+        }
+
+        .admin-box{
+
+            display:flex;
+
+            align-items:center;
+
+            gap:15px;
+
+        }
+
+        .admin-avatar{
+
+            width:48px;
+
+            height:48px;
+
+            border-radius:50%;
+
+            background:#2563eb;
+
+            color:white;
+
+            display:flex;
+
+            justify-content:center;
+
+            align-items:center;
+
+            font-weight:bold;
+
+            font-size:18px;
+
+        }
+
+        .admin-box h6{
+
+            margin:0;
+
+            font-weight:700;
+
+        }
+
+        .admin-box small{
+
+            color:#9ca3af;
+
+        }
+
+        /* ===========================
+                MAIN
+        =========================== */
+
+        main{
+
+            padding:35px;
+
+        }
+
+        .card-custom{
+
+            border:none;
+
+            border-radius:24px;
+
+            background:#fff;
+
+            box-shadow:0 12px 35px rgba(0,0,0,.05);
+
+            transition:.25s;
+
+        }
+
+        .card-custom:hover{
+
+            transform:translateY(-4px);
+
+            box-shadow:0 18px 45px rgba(0,0,0,.08);
+
+        }
+
+        .table{
+
+            margin-bottom:0;
+
+        }
+
+        .table thead th{
+
+            border:none;
+
+            background:#f8fafc;
+
+            color:#64748b;
+
+            font-size:13px;
+
+            text-transform:uppercase;
+
+        }
+
+        .table tbody td{
+
+            vertical-align:middle;
+
+            border-color:#eef2f7;
+
+        }
+
+        .badge-status{
+
+            border-radius:999px;
+
+            padding:8px 15px;
+
+            font-size:12px;
+
+            font-weight:600;
+
+        }
+        /* ===========================
+                RESPONSIVE
+        =========================== */
+
+        @media(max-width:992px){
+
+            .sidebar{
+
+                left:-280px;
+
+                transition:.3s;
 
             }
 
-            to {
+            .sidebar.show{
 
-                opacity: 1;
+                left:0;
 
-                transform: translateY(0);
+            }
+
+            .content{
+
+                margin-left:0;
+
+            }
+
+            .topbar{
+
+                padding:0 20px;
+
+            }
+
+            main{
+
+                padding:20px;
+
+            }
+
+            .topbar-left h4{
+
+                font-size:20px;
 
             }
 
         }
 
-
-        /* =======================
-RESPONSIVE
-======================= */
-
-        @media(max-width:992px) {
-
-            .sidebar {
-
-                width: 100%;
-
-                height: auto;
-
-                position: relative;
-
-            }
-
-
-            .content {
-
-                margin-left: 0;
-
-            }
-
-
-            .topbar {
-
-                flex-direction: column;
-
-                align-items: flex-start;
-
-                gap: 15px;
-
-            }
-
-        }
     </style>
 
 </head>
 
 <body>
 
+<div class="sidebar">
 
-    <!-- SIDEBAR -->
+    <div class="logo">
 
-    <div class="sidebar">
+        <div class="logo-icon">
 
+            <i class="bi bi-mortarboard-fill"></i>
 
-        <a href="/admin" class="logo">
+        </div>
 
-            🎓 ScholarHub
+        <div>
 
-        </a>
+            <h4>
 
+                ScholarHub
 
-        <div class="menu">
+            </h4>
 
+            <small>
 
-            <a href="/admin" class="{{ request()->is('admin') ? 'active' : '' }}">
+                Admin Panel
 
-                <i class="bi bi-grid-fill"></i>
+            </small>
 
-                Dashboard
+        </div>
 
-            </a>
+    </div>
 
+    <div class="menu-title">
 
-            <a href="/admin/program" class="{{ request()->is('admin/program') ? 'active' : '' }}">
+        Main Menu
 
-                <i class="bi bi-mortarboard-fill"></i>
+    </div>
 
-                Program Beasiswa
+    <a href="/admin"
 
-            </a>
+       class="nav-link {{ request()->is('admin') ? 'active' : '' }}">
 
+        <i class="bi bi-grid-fill"></i>
 
-            <a href="/admin/applicants" class="{{ request()->is('admin/applicants') ? 'active' : '' }}">
+        Dashboard
 
-                <i class="bi bi-people-fill"></i>
+    </a>
 
-                Data Pendaftar
+    <a href="/admin/program"
 
-            </a>
+       class="nav-link {{ request()->is('admin/program*') ? 'active' : '' }}">
 
+        <i class="bi bi-book-half"></i>
 
-            <a href="/admin/verification" class="{{ request()->is('admin/verification') ? 'active' : '' }}">
+        Program Beasiswa
 
-                <i class="bi bi-file-earmark-check-fill"></i>
+    </a>
 
-                Verifikasi Berkas
+    <a href="/admin/applicants"
 
-            </a>
+       class="nav-link {{ request()->is('admin/applicants*') ? 'active' : '' }}">
 
+        <i class="bi bi-people-fill"></i>
 
-            <a href="/admin/reports" class="{{ request()->is('admin/reports') ? 'active' : '' }}">
+        Data Pendaftar
 
-                <i class="bi bi-bar-chart-fill"></i>
+    </a>
 
-                Laporan
+    <a href="/admin/verification"
 
-            </a>
+       class="nav-link {{ request()->is('admin/verification*') ? 'active' : '' }}">
 
+        <i class="bi bi-patch-check-fill"></i>
 
-            <a href="/admin/settings" class="{{ request()->is('admin/settings') ? 'active' : '' }}">
+        Verifikasi Berkas
 
-                <i class="bi bi-gear-fill"></i>
+    </a>
 
-                Pengaturan
+    <a href="/admin/reports"
 
-            </a>
+       class="nav-link {{ request()->is('admin/reports*') ? 'active' : '' }}">
 
+        <i class="bi bi-bar-chart-fill"></i>
 
-            <a href="/">
+        Laporan
 
-                <i class="bi bi-box-arrow-left"></i>
+    </a>
+
+    <a href="/admin/settings"
+
+       class="nav-link {{ request()->is('admin/settings*') ? 'active' : '' }}">
+
+        <i class="bi bi-gear-fill"></i>
+
+        Pengaturan
+
+    </a>
+
+    <div class="sidebar-footer">
+
+        <hr>
+
+        <form action="/logout" method="POST">
+
+            @csrf
+
+            <button class="btn btn-outline-danger logout-btn">
+
+                <i class="bi bi-box-arrow-right me-2"></i>
 
                 Logout
 
-            </a>
+            </button>
 
-
-        </div>
+        </form>
 
     </div>
 
+</div>
 
-    <!-- CONTENT -->
+<div class="content">
 
-    <div class="content">
+    <div class="topbar">
 
+        <div class="topbar-left">
 
-        <div class="topbar">
-
-
-            <h3>
+            <h4>
 
                 @yield('title')
 
-            </h3>
+            </h4>
 
+            <small>
 
-            <div class="admin-profile">
+                ScholarHub Administration Dashboard
 
-                <i class="bi bi-person-circle"></i>
-
-                Admin
-
-            </div>
-
+            </small>
 
         </div>
 
+        <div class="topbar-right">
 
-        @yield('content')
+            <button class="icon-btn">
 
+                <i class="bi bi-search"></i>
+
+            </button>
+
+            <button class="icon-btn">
+
+                <i class="bi bi-bell"></i>
+
+            </button>
+
+            <div class="admin-box">
+
+                <div class="admin-avatar">
+
+                    A
+
+                </div>
+
+                <div>
+
+                    <h6>
+
+                        Administrator
+
+                    </h6>
+
+                    <small>
+
+                        System Manager
+
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
 
     </div>
 
+    <main>
+
+        @if(session('success'))
+
+            <div class="alert alert-success rounded-4 border-0 shadow-sm">
+
+                {{ session('success') }}
+
+            </div>
+
+        @endif
+
+        @if(session('error'))
+
+            <div class="alert alert-danger rounded-4 border-0 shadow-sm">
+
+                {{ session('error') }}
+
+            </div>
+
+        @endif
+
+        @yield('content')
+
+    </main>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+
+document.querySelectorAll(".card-custom").forEach(card=>{
+
+    card.addEventListener("mouseenter",()=>{
+
+        card.style.transition=".25s";
+
+    });
+
+});
+
+</script>
 
 </body>
 

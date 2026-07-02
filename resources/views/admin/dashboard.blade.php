@@ -221,7 +221,7 @@
 
 <div class="row mt-4">
 
-    <div class="col-lg-8">
+    <div class="col-lg-12">
 
         <div class="card-custom p-4">
 
@@ -321,69 +321,7 @@
 
         </div>
 
-    </div>    <div class="col-lg-4">
 
-        <div class="card-custom p-4 h-100">
-
-            <div class="d-flex justify-content-between align-items-center mb-4">
-
-                <h5 class="fw-bold mb-0">
-
-                    Quick Action
-
-                </h5>
-
-                <i class="bi bi-lightning-charge-fill text-warning fs-4"></i>
-
-            </div>
-
-            <div class="d-grid gap-3">
-
-                <a href="/admin/program"
-
-                   class="btn btn-outline-primary rounded-4 py-3">
-
-                    <i class="bi bi-book-half me-2"></i>
-
-                    Kelola Program
-
-                </a>
-
-                <a href="/admin/applicants"
-
-                   class="btn btn-outline-success rounded-4 py-3">
-
-                    <i class="bi bi-people-fill me-2"></i>
-
-                    Data Pendaftar
-
-                </a>
-
-                <a href="/admin/verification"
-
-                   class="btn btn-outline-warning rounded-4 py-3">
-
-                    <i class="bi bi-patch-check-fill me-2"></i>
-
-                    Verifikasi Berkas
-
-                </a>
-
-                <a href="/admin/reports"
-
-                   class="btn btn-outline-dark rounded-4 py-3">
-
-                    <i class="bi bi-bar-chart-fill me-2"></i>
-
-                    Lihat Laporan
-
-                </a>
-
-            </div>
-
-        </div>
-
-    </div>
 
 </div>
 

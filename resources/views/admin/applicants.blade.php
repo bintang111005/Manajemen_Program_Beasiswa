@@ -64,11 +64,11 @@
 
 </div>
 
-<div class="card-custom p-0 overflow-hidden">
+<div>
 
-<div class="table-responsive">
+<div class="table table-hover-responsive">
 
-<table class="table align-middle mb-0"
+<table class="table table-hover align-middle mb-0"
 
 id="applicantTable">
 
@@ -112,7 +112,7 @@ Aksi
 
 <tbody>
 
-@foreach($applications as $application)
+@forelse($applications as $application)
 
 <tr>
 
@@ -128,7 +128,7 @@ height:52px;
 
 border-radius:50%;
 
-background:#2563eb;
+background:#008080;
 
 color:white;
 
@@ -253,8 +253,17 @@ method="POST">
                 </td>
 
             </tr>
-
-            @endforeach
+            @empty
+            <tr>
+                <td colspan="5" class="text-center py-5">
+                    <div class="empty-state">
+                        <i class="bi bi-inbox display-4 text-muted mb-3" style="opacity: 0.5;"></i>
+                        <h5 class="fw-bold">Belum Ada Pendaftar</h5>
+                        <p class="text-secondary">Belum ada mahasiswa yang mendaftar beasiswa saat ini.</p>
+                    </div>
+                </td>
+            </tr>
+            @endforelse
 
             </tbody>
 

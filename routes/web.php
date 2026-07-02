@@ -319,9 +319,11 @@ PENGATURAN
 ====================== */
 
 Route::get(
-
     '/admin/settings',
-
     [AuthController::class, 'settings']
+)->name('admin.settings');
 
-);
+Route::put(
+    '/admin/settings',
+    [AuthController::class, 'updateSettings']
+)->name('admin.settings.update');

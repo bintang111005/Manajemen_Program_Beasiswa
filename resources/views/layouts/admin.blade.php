@@ -29,8 +29,50 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
           rel="stylesheet">
 
-    <style>
+    @viteReactRefresh
+    @vite(['resources/js/react-app.jsx'])
 
+    <style>
+        :root {
+            --bs-primary: #008080;
+            --bs-primary-rgb: 0, 128, 128;
+            --bs-link-color: #008080;
+            --bs-link-hover-color: #002B2B;
+            --bg: #FAFCFC;
+            --navbar: #FFFFFF;
+            --text: #001A1A;
+            --primary: #008080;
+            --secondary: #2BC4C4;
+            --text-soft: #667575;
+            --dark-teal: #002B2B;
+        }
+
+        .bg-primary {
+            background-color: #008080 !important;
+        }
+
+        .text-primary {
+            color: #008080 !important;
+        }
+
+        .btn-primary {
+            background-color: #008080 !important;
+            border-color: #008080 !important;
+        }
+
+        .btn-primary:hover {
+            background-color: #002B2B !important;
+            border-color: #002B2B !important;
+        }
+        
+        .btn-outline-primary {
+            color: #008080 !important;
+            border-color: #008080 !important;
+        }
+        .btn-outline-primary:hover {
+            background-color: #008080 !important;
+            color: #fff !important;
+        }
         *{
 
             margin:0;
@@ -109,7 +151,7 @@
 
             border-radius:18px;
 
-            background:linear-gradient(135deg,#2563eb,#3b82f6);
+            background:linear-gradient(135deg,#008080,#2BC4C4);
 
             color:white;
 
@@ -121,7 +163,7 @@
 
             font-size:24px;
 
-            box-shadow:0 12px 30px rgba(37,99,235,.25);
+            box-shadow:0 12px 30px rgba(0,128,128,.25);
 
         }
 
@@ -177,9 +219,9 @@
 
         .sidebar .nav-link:hover{
 
-            background:#eff6ff;
+            background:#EAF8F8;
 
-            color:#2563eb;
+            color:#008080;
 
             transform:translateX(4px);
 
@@ -187,11 +229,11 @@
 
         .sidebar .nav-link.active{
 
-            background:linear-gradient(135deg,#2563eb,#3b82f6);
+            background:linear-gradient(135deg,#008080,#2BC4C4);
 
             color:white;
 
-            box-shadow:0 15px 35px rgba(37,99,235,.25);
+            box-shadow:0 15px 35px rgba(0,128,128,.25);
 
         }
 
@@ -301,7 +343,7 @@
 
         .icon-btn:hover{
 
-            background:#2563eb;
+            background:#008080;
 
             color:white;
 
@@ -325,7 +367,7 @@
 
             border-radius:50%;
 
-            background:#2563eb;
+            background:#008080;
 
             color:white;
 
@@ -365,66 +407,99 @@
 
         }
 
-        .card-custom{
-
-            border:none;
-
-            border-radius:24px;
-
-            background:#fff;
-
-            box-shadow:0 12px 35px rgba(0,0,0,.05);
-
-            transition:.25s;
-
+        .card-custom {
+            border: none;
+            border-radius: 24px;
+            background: #fff;
+            box-shadow: 0 12px 35px rgba(0, 128, 128, 0.04);
+            transition: .25s;
         }
 
-        .card-custom:hover{
-
-            transform:translateY(-4px);
-
-            box-shadow:0 18px 45px rgba(0,0,0,.08);
-
+        .card-custom:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 45px rgba(0, 128, 128, 0.12);
         }
 
-        .table{
-
-            margin-bottom:0;
-
+        .table {
+            border-collapse: separate !important;
+            border-spacing: 0 10px !important;
+            margin-bottom: 0;
         }
 
-        .table thead th{
-
-            border:none;
-
-            background:#f8fafc;
-
-            color:#64748b;
-
-            font-size:13px;
-
-            text-transform:uppercase;
-
+        .table thead th {
+            border: none;
+            background: #f8fafc;
+            color: #64748b;
+            font-size: 13px;
+            text-transform: uppercase;
+            padding: 16px 20px;
+        }
+        
+        .table thead th:first-child {
+            border-top-left-radius: 12px;
+            border-bottom-left-radius: 12px;
         }
 
-        .table tbody td{
-
-            vertical-align:middle;
-
-            border-color:#eef2f7;
-
+        .table thead th:last-child {
+            border-top-right-radius: 12px;
+            border-bottom-right-radius: 12px;
         }
 
-        .badge-status{
+        .table tbody tr {
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            transition: all 0.2s ease;
+            border-radius: 12px;
+        }
 
-            border-radius:999px;
+        .table.table-hover tbody tr:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 128, 128, 0.08);
+            background: #fff;
+        }
 
-            padding:8px 15px;
+        .table tbody td {
+            vertical-align: middle;
+            border: none;
+            padding: 16px 20px;
+        }
 
-            font-size:12px;
+        .table tbody td:first-child {
+            border-top-left-radius: 12px;
+            border-bottom-left-radius: 12px;
+        }
 
-            font-weight:600;
+        .table tbody td:last-child {
+            border-top-right-radius: 12px;
+            border-bottom-right-radius: 12px;
+        }
 
+        /* Modern Badges */
+        .badge {
+            border-radius: 99px !important;
+            padding: 8px 16px !important;
+            font-weight: 600 !important;
+            border: 1px solid transparent;
+        }
+        .badge.bg-primary {
+            background-color: rgba(0, 128, 128, 0.1) !important;
+            color: #008080 !important;
+            border-color: rgba(0, 128, 128, 0.2);
+        }
+        .badge.bg-success {
+            background-color: rgba(25, 135, 84, 0.1) !important;
+            color: #198754 !important;
+            border-color: rgba(25, 135, 84, 0.2);
+        }
+        .badge.bg-warning {
+            background-color: rgba(255, 193, 7, 0.1) !important;
+            color: #ffc107 !important;
+            border-color: rgba(255, 193, 7, 0.2);
+        }
+        .badge.bg-danger {
+            background-color: rgba(220, 53, 69, 0.1) !important;
+            color: #dc3545 !important;
+            border-color: rgba(220, 53, 69, 0.2);
         }
         /* ===========================
                 RESPONSIVE
@@ -630,9 +705,13 @@
 
             <div class="admin-box">
 
+                @php
+                    $adminUser = \App\Models\User::where('role', 'admin')->first() ?? (object)['name' => 'Administrator'];
+                @endphp
+
                 <div class="admin-avatar">
 
-                    A
+                    {{ strtoupper(substr($adminUser->name, 0, 1)) }}
 
                 </div>
 
@@ -640,7 +719,7 @@
 
                     <h6>
 
-                        Administrator
+                        {{ $adminUser->name }}
 
                     </h6>
 

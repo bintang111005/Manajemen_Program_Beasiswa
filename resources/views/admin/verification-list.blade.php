@@ -42,8 +42,8 @@
 </div>
 
 <div class="card-custom p-4">
-    <div class="table-responsive">
-        <table class="table align-middle" id="verificationTable">
+    <div class="table table-hover-responsive">
+        <table class="table table-hover align-middle" id="verificationTable">
             <thead>
             <tr>
                 <th>#</th>
@@ -55,7 +55,7 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($applications as $application)
+            @forelse($applications as $application)
             <tr>
                 <td>
                     {{ $loop->iteration }}
@@ -85,16 +85,19 @@
                     </a>
                 </td>
             </tr>
-            @endforeach
+            @empty
+            <tr>
+                <td colspan="5" class="text-center py-5">
+                    <div class="empty-state">
+                        <i class="bi bi-folder-check display-4 text-muted mb-3" style="opacity: 0.5;"></i>
+                        <h5 class="fw-bold">Tidak Ada Berkas</h5>
+                        <p class="text-secondary">Saat ini belum ada mahasiswa yang menunggu verifikasi.</p>
+                    </div>
+                </td>
+            </tr>
+            @endforelse
             </tbody>
         </table>
-        @if($applications->count() == 0)
-        <div class="text-center py-5">
-            <i class="bi bi-folder-x display-1 text-secondary"></i>
-            <h4 class="fw-bold mt-3">Tidak Ada Berkas</h4>
-            <p class="text-secondary">Saat ini belum ada mahasiswa yang menunggu verifikasi.</p>
-        </div>
-        @endif
     </div>
 </div>
 

@@ -86,9 +86,9 @@
 
 <div class="card-custom p-4">
 
-    <div class="table-responsive">
+    <div class="table table-hover-responsive">
 
-        <table class="table align-middle" id="programTable">
+        <table class="table table-hover align-middle" id="programTable">
 
             <thead>
 
@@ -110,7 +110,7 @@
 
             <tbody>
 
-            @foreach($scholarships as $program)
+            @forelse($scholarships as $program)
 
             <tr>
 
@@ -122,7 +122,7 @@
 
                 <td>
 
-                    <span class="fw-semibold">
+                    <span class="fw-semibold text-primary">
 
                         {{ $program->name }}
 
@@ -140,7 +140,7 @@
 
                     <span class="badge bg-primary">
 
-                        {{ $program->quota }}
+                        {{ $program->quota }} Kuota
 
                     </span>
 
@@ -154,7 +154,7 @@
 
                            class="btn btn-sm btn-warning rounded-pill">
 
-                            <i class="bi bi-pencil"></i>
+                            <i class="bi bi-pencil"></i> Edit
 
                         </a>
 
@@ -169,7 +169,7 @@
                                     class="btn btn-sm btn-danger rounded-pill"
                                     onclick="return confirm('Yakin ingin menghapus program ini?')">
 
-                                <i class="bi bi-trash"></i>
+                                <i class="bi bi-trash"></i> Hapus
 
                             </button>
 
@@ -181,7 +181,19 @@
 
             </tr>
 
-            @endforeach
+            @empty
+
+            <tr>
+                <td colspan="5" class="text-center py-5">
+                    <div class="empty-state">
+                        <i class="bi bi-folder-x display-4 text-muted mb-3" style="opacity: 0.5;"></i>
+                        <h5 class="fw-bold">Belum Ada Program</h5>
+                        <p class="text-secondary">Silakan tambah program beasiswa baru melalui tombol di kanan atas.</p>
+                    </div>
+                </td>
+            </tr>
+
+            @endforelse
 
             </tbody>
 

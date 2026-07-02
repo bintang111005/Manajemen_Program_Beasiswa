@@ -200,86 +200,9 @@
     <!-- PROGRAM BEASISWA -->
 
     <section id="program" class="section fade-up">
-
         <div class="container">
-
-            <div class="text-center mb-5">
-
-                <span class="section-subtitle">Program Beasiswa</span>
-
-                <h2 class="section-title">Pilih Program Beasiswa</h2>
-
-                <p class="hero-text mx-auto" style="max-width: 600px;">
-
-                    Temukan program beasiswa yang sesuai dengan kemampuan dan kebutuhanmu.
-
-                </p>
-
-            </div>
-
-
-            <div class="row g-4">
-
-
-                @forelse($scholarships as $scholarship)
-
-
-                    <div class="col-lg-4">
-
-                        <div class="category-card text-center h-100 d-flex flex-column justify-content-between">
-
-                            <div>
-                                <div class="icon-circle mx-auto">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2.5 3 6 3s6-1 6-3v-5"/></svg>
-                                </div>
-
-                                <h3 class="fw-bold mt-2 mb-3" style="font-size: 22px; color: var(--dark-teal);">
-                                    {{ $scholarship->name }}
-                                </h3>
-
-                                <p class="text-muted mb-4" style="font-size: 15px; line-height: 1.6;">
-                                    {{ $scholarship->description }}
-                                </p>
-                            </div>
-
-                            <div>
-                                <div class="mb-4">
-                                    <span class="badge rounded-pill bg-light px-3 py-2 border border-light" style="color: var(--primary); font-weight: 600; font-size: 13px;">
-                                        Kuota: {{ $scholarship->quota }} orang
-                                    </span>
-                                </div>
-
-                                <a href="/login?program={{ $scholarship->id }}" class="btn btn-main w-100">
-                                    Daftar Sekarang
-                                </a>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                @empty
-
-
-                    <div class="col-12">
-
-                        <div class="alert alert-warning text-center">
-
-                            Belum ada program beasiswa.
-
-                        </div>
-
-                    </div>
-
-
-                @endforelse
-
-
-            </div>
-
+            <div id="react-scholarship-explorer" data-scholarships="{{ $scholarships->toJson() }}"></div>
         </div>
-
     </section>
 
 
@@ -435,6 +358,12 @@
 
         </div>
 
+    </section>
+
+    <section class="section fade-up" style="background: var(--bg);">
+        <div class="container">
+            <div id="react-faq"></div>
+        </div>
     </section>
 
     <!-- FOOTER -->

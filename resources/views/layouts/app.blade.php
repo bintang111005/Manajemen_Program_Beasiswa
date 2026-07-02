@@ -14,6 +14,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
 
+    @viteReactRefresh
+    @vite(['resources/js/react-app.jsx'])
+
     <style>
         :root {
             --bg: #FAFCFC;
@@ -49,7 +52,9 @@
         NAVBAR REDESIGN
         ====================== */
         .navbar {
-            background: #FFFFFF !important;
+            background: rgba(255, 255, 255, 0.85) !important;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             padding: 12px 24px;
             position: sticky;
             top: 20px;
@@ -58,8 +63,8 @@
             border-radius: 100px;
             max-width: 1200px;
             width: 92%;
-            box-shadow: 0 10px 30px rgba(0, 43, 43, 0.05);
-            border: 1px solid rgba(0, 128, 128, 0.08);
+            box-shadow: 0 10px 40px rgba(0, 43, 43, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.4);
             transition: all 0.3s ease;
         }
 
@@ -108,7 +113,7 @@
         BUTTONS
         ====================== */
         .btn-main {
-            background: var(--dark-teal);
+            background: linear-gradient(135deg, var(--dark-teal), var(--primary));
             color: #FFFFFF;
             padding: 14px 34px;
             border-radius: 100px;
@@ -116,29 +121,48 @@
             text-decoration: none;
             border: none;
             display: inline-block;
-            transition: .3s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-main::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.3s ease;
         }
 
         .btn-main:hover {
-            background: var(--primary);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 128, 128, 0.15);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 128, 128, 0.25);
             color: #FFFFFF;
+        }
+
+        .btn-main:hover::before {
+            opacity: 1;
         }
 
         .btn-outline-main {
             border: 2px solid var(--primary);
-            padding: 14px 34px;
+            background: transparent;
+            padding: 12px 32px;
             border-radius: 100px;
             font-weight: 600;
             text-decoration: none;
             color: var(--primary);
-            transition: .3s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .btn-outline-main:hover {
             background: var(--primary);
             color: #FFFFFF;
+            box-shadow: 0 8px 16px rgba(0, 128, 128, 0.15);
+            transform: translateY(-2px);
         }
 
         /* ======================

@@ -209,39 +209,32 @@ class AuthController extends Controller
     }
     public function adminLogin(Request $request)
     {
-
         $request->validate([
-
             'username' => 'required',
-
             'password' => 'required'
-
         ]);
 
-
-        if (
-
-            $request->username == 'admin'
-
-            &&
-
-            $request->password == '123'
-
-        ) {
-
-            session([
-
-                'admin' => true
-
-            ]);
-
-
-            return redirect(
-
-                '/admin'
-
+        $admin = \App\Models\User::where('role', 'admin')->first();
+        if (!$admin) {
+            $admin = \App\Models\User::updateOrCreate(
+                ['email' => 'admin@scholarhub.com'],
+                [
+                    'name' => 'Administrator',
+                    'password' => \Illuminate\Support\Facades\Hash::make('123'),
+                    'role' => 'admin',
+                    'email_verified_at' => now(),
+                ]
             );
+        }
 
+        if ($request->username == $admin->email || $request->username == 'admin') {
+            if (\Illuminate\Support\Facades\Hash::check($request->password, $admin->password)) {
+                session([
+                    'admin' => true,
+                    'admin_id' => $admin->id
+                ]);
+                return redirect('/admin');
+            }
         }
 
 
@@ -258,13 +251,43 @@ class AuthController extends Controller
     }
     public function settings()
     {
-
-        return view(
-
-            'admin.settings'
-
-        );
-
+        $admin = \App\Models\User::where('role', 'admin')->first();
+        if (!$admin) {
+            $admin = \App\Models\User::updateOrCreate(
+                ['email' => 'admin@scholarhub.com'],
+                [
+                    'name' => 'Administrator',
+                    'password' => \Illuminate\Support\Facades\Hash::make('123'),
+                    'role' => 'admin',
+                    'email_verified_at' => now(),
+                ]
+            );
+        }
+        return view('admin.settings', compact('admin'));
     }
 
+    public function updateSettings(Request $request)
+    {
+        $admin = \App\Models\User::where('role', 'admin')->first();
+        if (!$admin) {
+            return back()->withErrors(['message' => 'Admin not found.']);
+        }
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255|unique:users,email,' . $admin->id,
+            'password' => 'nullable|min:3',
+        ]);
+
+        $admin->name = $request->name;
+        $admin->email = $request->email;
+
+        if ($request->filled('password')) {
+            $admin->password = \Illuminate\Support\Facades\Hash::make($request->password);
+        }
+
+        $admin->save();
+
+        return back()->with('success', 'Pengaturan berhasil diperbarui!');
+    }
 }

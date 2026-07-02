@@ -32,11 +32,11 @@
 
                             <label class="form-label">
 
-                                Username
+                                Username / Email
 
                             </label>
 
-                            <input type="text" name="username" class="form-control" required>
+                            <input type="text" name="username" class="form-control" placeholder="admin / admin@scholarhub.com" required>
 
                         </div>
 

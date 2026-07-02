@@ -41,7 +41,7 @@
             <div style="width:90px;
 height:90px;
 border-radius:50%;
-background:#2563eb;
+background:#008080;
 display:flex;
 justify-content:center;
 align-items:center;

@@ -373,7 +373,7 @@
 
             </h5>
 
-            <table class="table table-borderless mb-0">
+            <table class="table table-hover table-borderless mb-0">
 
                 <tr>
 
@@ -464,7 +464,7 @@
         <h2>Laporan Data Pendaftar Beasiswa</h2>
         <p>Dicetak pada: {{ now()->format('d M Y H:i') }}</p>
     </div>
-    <table class="table table-bordered" id="exportTable">
+    <table class="table table-hover table-bordered" id="exportTable">
         <thead>
             <tr>
                 <th>No</th>

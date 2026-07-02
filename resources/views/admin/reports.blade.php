@@ -22,13 +22,23 @@
 
     </div>
 
-    <button class="btn btn-primary rounded-pill px-4">
+    <div class="dropdown">
 
-        <i class="bi bi-download me-2"></i>
+        <button class="btn btn-primary rounded-pill px-4 dropdown-toggle" type="button" id="dropdownExport" data-bs-toggle="dropdown" aria-expanded="false">
 
-        Export
+            <i class="bi bi-download me-2"></i> Export
 
-    </button>
+        </button>
+
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownExport">
+
+            <li><a class="dropdown-item" href="#" onclick="exportExcel()">Export Excel</a></li>
+
+            <li><a class="dropdown-item" href="#" onclick="exportPDF()">Export PDF / Print</a></li>
+
+        </ul>
+
+    </div>
 
 </div>
 
@@ -444,5 +454,84 @@
     </div>
 
 </div>
+
+
+@php
+    $allApps = \App\Models\ScholarshipApplication::with('user', 'scholarship')->latest()->get();
+@endphp
+<div style="display:none;" id="exportArea">
+    <div class="text-center mb-4">
+        <h2>Laporan Data Pendaftar Beasiswa</h2>
+        <p>Dicetak pada: {{ now()->format('d M Y H:i') }}</p>
+    </div>
+    <table class="table table-bordered" id="exportTable">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Nama Lengkap</th>
+                <th>Program Beasiswa</th>
+                <th>NIM</th>
+                <th>Program Studi</th>
+                <th>Jenjang</th>
+                <th>Semester</th>
+                <th>IPK</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($allApps as $index => $app)
+            <tr>
+                <td>{{ $index + 1 }}</td>
+                <td>{{ $app->user ? $app->user->name : '-' }}</td>
+                <td>{{ $app->scholarship ? $app->scholarship->name : $app->program }}</td>
+                <td>{{ $app->nim }}</td>
+                <td>{{ $app->major }}</td>
+                <td>{{ $app->jenjang }}</td>
+                <td>{{ $app->semester }}</td>
+                <td>{{ $app->gpa }}</td>
+                <td>{{ strtoupper($app->status) }}</td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function exportPDF() {
+        let printContents = document.getElementById('exportArea').innerHTML;
+        let originalContents = document.body.innerHTML;
+        
+        document.body.innerHTML = printContents;
+        document.body.style.display = 'block';
+        window.print();
+        
+        document.body.innerHTML = originalContents;
+        window.location.reload();
+    }
+
+    function exportExcel() {
+        let table = document.getElementById("exportTable");
+        let rows = table.querySelectorAll("tr");
+        let csv = [];
+        
+        for (let i = 0; i < rows.length; i++) {
+            let row = [], cols = rows[i].querySelectorAll("td, th");
+            for (let j = 0; j < cols.length; j++) {
+                let data = cols[j].innerText.replace(/(\r\n|\n|\r)/gm, "").replace(/(\s\s)/gm, " ");
+                data = data.replace(/"/g, '""');
+                row.push('"' + data + '"');
+            }
+            csv.push(row.join(";"));
+        }
+        
+        let csvFile = new Blob([csv.join("\n")], {type: "text/csv"});
+        let downloadLink = document.createElement("a");
+        downloadLink.download = "Laporan_Beasiswa.csv";
+        downloadLink.href = window.URL.createObjectURL(csvFile);
+        downloadLink.style.display = "none";
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+    }
+</script>
 
 @endsection

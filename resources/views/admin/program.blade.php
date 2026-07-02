@@ -227,7 +227,21 @@
 
                 @csrf
 
+                <input type="hidden" name="provider" value="Admin ScholarHub">
+                <input type="hidden" name="deadline" value="{{ now()->addMonths(6)->format('Y-m-d') }}">
+                <input type="hidden" name="status" value="open">
+
                 <div class="modal-body">
+
+                    @if ($errors->any())
+                        <div class="alert alert-danger mb-4">
+                            <ul class="mb-0">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
 
                     <div class="mb-3">
 
@@ -328,6 +342,16 @@ document.getElementById('searchProgram').addEventListener('keyup', function(){
     });
 
 });
+
+@if($errors->any())
+document.addEventListener('DOMContentLoaded', function() {
+    var modalElement = document.getElementById('modalTambah');
+    if (modalElement && typeof bootstrap !== 'undefined') {
+        var myModal = new bootstrap.Modal(modalElement);
+        myModal.show();
+    }
+});
+@endif
 
 </script>
 

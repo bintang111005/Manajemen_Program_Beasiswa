@@ -32,6 +32,10 @@
                         <!-- PROGRAM -->
 
                         <div class="mb-4">
+                            @php
+                                $application = \App\Models\ScholarshipApplication::where('user_id', auth()->id())->latest()->first();
+                                $programName = $application ? $application->program : 'Program Beasiswa';
+                            @endphp
 
                             <label class="form-label">
 
@@ -39,19 +43,7 @@
 
                             </label>
 
-                            <input type="text" class="form-control" value="{{
-
-        session('program') == 'akademik'
-
-        ? 'Prestasi Akademik'
-
-        : (session('program') == 'non-akademik'
-
-            ? 'Prestasi Non Akademik'
-
-            : 'Bantuan Ekonomi')
-
-    }}" readonly>
+                            <input type="text" class="form-control" value="{{ $programName }}" readonly>
 
                         </div>
 
@@ -105,7 +97,7 @@
 
 
 
-                        @if(session('program') == 'akademik')
+                        @if($application && stripos($application->program, 'akademik') !== false && stripos($application->program, 'non') === false)
 
                             <div class="mb-4">
 
@@ -146,7 +138,7 @@
                             </div>
 
 
-                        @elseif(session('program') == 'non-akademik')
+                        @elseif($application && stripos($application->program, 'non akademik') !== false)
 
                             <div class="mb-4">
 
@@ -187,7 +179,7 @@
                             </div>
 
 
-                        @else
+                        @elseif($application && stripos($application->program, 'ekonomi') !== false)
 
                             <div class="mb-4">
 
@@ -224,6 +216,46 @@
                                 </label>
 
                                 <input type="file" name="document_3" class="form-control" required>
+
+                            </div>
+
+                        @else
+
+                            <div class="mb-4">
+
+                                <label class="form-label">
+
+                                    Dokumen Persyaratan Utama
+
+                                </label>
+
+                                <input type="file" name="document_1" class="form-control" required>
+
+                            </div>
+
+
+                            <div class="mb-4">
+
+                                <label class="form-label">
+
+                                    Dokumen Pendukung
+
+                                </label>
+
+                                <input type="file" name="document_2" class="form-control" required>
+
+                            </div>
+
+
+                            <div class="mb-5">
+
+                                <label class="form-label">
+
+                                    Dokumen Tambahan (Opsional)
+
+                                </label>
+
+                                <input type="file" name="document_3" class="form-control">
 
                             </div>
 

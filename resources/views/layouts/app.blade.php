@@ -146,7 +146,7 @@
         ====================== */
         .hero-section {
             position: relative;
-            padding: 140px 0 100px;
+            padding: 40px 0 100px;
             overflow: visible;
             background-color: #FAFCFC;
             background-image: radial-gradient(rgba(0, 128, 128, 0.08) 1.5px, transparent 1.5px);

@@ -384,6 +384,31 @@ class ScholarshipApplicationController extends Controller
 
     ) {
 
+        if ($request->status == 'awarded') {
+
+            $scholarship = Scholarship::find($application->scholarship_id);
+
+            $acceptedCount = ScholarshipApplication::where('scholarship_id', $scholarship->id)->where('status', 'awarded')->count();
+
+            if ($acceptedCount >= $scholarship->quota) {
+
+                return redirect(
+
+                    '/admin/applicants'
+
+                )->with(
+
+                    'error',
+
+                    'Gagal: Kuota program beasiswa ini sudah penuh.'
+
+                );
+
+            }
+
+        }
+
+
         $application->update([
 
             'status' => $request->status,

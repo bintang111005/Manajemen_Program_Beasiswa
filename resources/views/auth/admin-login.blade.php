@@ -63,26 +63,6 @@
 
                     </form>
 
-
-                    <div class="mt-4">
-
-                        <small>
-
-                            Username : admin
-
-                        </small>
-
-                        <br>
-
-                        <small>
-
-                            Password : 123
-
-                        </small>
-
-                    </div>
-
-
                 </div>
 
             </div>

@@ -126,6 +126,12 @@
 
     <section class="section fade-up">
 
+        @php
+            $totalProgram = \App\Models\Scholarship::count();
+            $totalPendaftar = \App\Models\ScholarshipApplication::count();
+            $totalPenerima = \App\Models\ScholarshipApplication::where('status', 'awarded')->count();
+        @endphp
+
         <div class="container">
 
             <div class="row g-4 text-center">
@@ -134,7 +140,7 @@
 
                     <div class="stat-card">
 
-                        <h2>250+</h2>
+                        <h2>{{ $totalProgram }}</h2>
 
                         <p>Program Beasiswa</p>
 
@@ -148,7 +154,7 @@
 
                     <div class="stat-card">
 
-                        <h2>18.500+</h2>
+                        <h2>{{ $totalPendaftar }}</h2>
 
                         <p>Pendaftar</p>
 
@@ -162,7 +168,7 @@
 
                     <div class="stat-card">
 
-                        <h2>7.850+</h2>
+                        <h2>{{ $totalPenerima }}</h2>
 
                         <p>Penerima</p>
 
@@ -418,7 +424,7 @@
                     <div class="hero-visual">
                         <img src="{{ asset('images/hero-person.jpg') }}" class="hero-image" alt="Feature Student" style="border-radius: 30px; box-shadow: 0 20px 40px rgba(0, 43, 43, 0.12); width: 100%; max-width: 500px; height: 450px; object-fit: cover;">
                         <div class="floating-card" style="right: 5%; top: 15%; width: 160px; height: auto; padding: 15px; border-radius: 16px; flex-direction: column; align-items: flex-start; text-align: left;">
-                            <span style="font-size: 24px; font-weight: 800; color: var(--primary);">7.8K+</span>
+                            <span style="font-size: 24px; font-weight: 800; color: var(--primary);">{{ \App\Models\ScholarshipApplication::where('status', 'awarded')->count() }}</span>
                             <span style="font-size: 11px; font-weight: 600; color: var(--text-soft); line-height: 1.2; margin-top: 4px;">Penerima Beasiswa Aktif</span>
                         </div>
                     </div>

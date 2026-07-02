@@ -52,7 +52,7 @@
 
                             <strong>
 
-                                TIDAK LOLOS
+                                DITOLAK
 
                             </strong>
 
